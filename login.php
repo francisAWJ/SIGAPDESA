@@ -11,12 +11,12 @@ session_start();
   <!-- Tailwind CSS -->
   <link href="./output.css" rel="stylesheet">
 
-  <!-- FontAwesome (optional, keep if you still want icons) -->
+  <!-- FontAwesome untuk icon -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-br from-red-700 to-red-500 font-sans min-h-screen flex items-center justify-center">
+<body class="bg-gradient-to-b from-rose-500 to-rose-300 font-sans min-h-screen flex items-center justify-center">
 
-  <div class="w-full max-w-md mx-auto bg-white rounded-xl shadow-2xl px-8 py-10 animate-[fadeIn_0.8s_ease]">
+  <div class="w-full max-w-md mx-4 sm:mx-auto bg-white rounded-xl shadow-2xl px-6 sm:px-8 py-8 sm:py-10">
     
     <!-- Logo -->
     <div class="flex justify-center mb-5">
@@ -24,7 +24,7 @@ session_start();
     </div>
 
     <!-- Title -->
-    <h3 class="text-red-700 font-bold text-center text-xl mb-6">
+    <h3 class="text-rose-700 font-bold text-center text-xl mb-6">
       Login ke SIGAP Desa
     </h3>
 
@@ -69,7 +69,7 @@ session_start();
       </div>
 
       <button type="submit"
-        class="w-full bg-red-700 hover:bg-red-800 text-white font-medium py-2 rounded-md transition">
+        class="w-full bg-rose-500 hover:bg-rose-800 text-white font-medium py-2 rounded-md transition">
         Login
       </button>
     </form>
@@ -80,7 +80,7 @@ session_start();
     </p>
   </div>
 
-  <!-- Custom animation (since Tailwind doesn't include fadeIn by default) -->
+  <!-- Animasi untuk login -->
   <style>
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
