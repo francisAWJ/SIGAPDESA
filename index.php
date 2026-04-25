@@ -61,9 +61,6 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
                 <span>Titik Evakuasi</span>
             </a>
 
-            <!-- Divider -->
-            <div class="border-t border-gray-700 my-4"></div>
-
             <!-- Logout -->
             <a href="logout.php"
                onclick="return confirm('Yakin ingin logout?');"
