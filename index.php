@@ -31,7 +31,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
 <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside class="w-64 bg-gradient-to-b from-rose-700 to-rose-500 text-white flex flex-col">
+    <aside class="w-64 bg-gradient-to-b from-rose-600 to-rose-400 text-white flex flex-col">
         
         <!-- Logo -->
         <div class="flex items-center justify-center py-4 border-b border-gray-700">
@@ -41,7 +41,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
         <!-- Menu -->
         <nav class="flex-1 px-4 py-6 space-y-2">
 
-            <a href="index.php" class="flex items-center gap-3 px-3 py-2 rounded bg-gray-800">
+            <a href="index.php" class="flex items-center gap-3 px-3 py-2 rounded bg-rose-800">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
             </a>
