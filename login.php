@@ -24,7 +24,7 @@ session_start();
     
     <!-- Logo -->
     <div class="flex justify-center mb-5">
-      <img src="img/gmls_logo_red.png" alt="Logo GMLS" class="w-[150px] h-[130px]">
+      <img src="img/gmls_logo_red.png" alt="Logo GMLS" class="w-40 h-auto object-contain">
     </div>
 
     <!-- Title -->
