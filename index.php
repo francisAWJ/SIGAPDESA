@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     <aside class="w-64 bg-gradient-to-b from-rose-600 to-rose-400 text-white flex flex-col">
         
         <!-- Logo -->
-        <div class="flex items-center justify-center py-4 border-b border-gray-700">
+        <div class="flex items-center justify-center py-4">
             <img src="img/gmls_logo.png" alt="Logo SIGAP DESA" class="w-40 h-auto">
         </div>
 
