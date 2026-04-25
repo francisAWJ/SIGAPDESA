@@ -8,92 +8,85 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - SIGAP Desa</title>
 
-  <!-- SB Admin & FontAwesome -->
+  <!-- Tailwind CSS -->
+  <link href="./output.css" rel="stylesheet">
+
+  <!-- FontAwesome (optional, keep if you still want icons) -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-  <style>
-    body {
-      background: linear-gradient(135deg, #b30000, #e74c3c);
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .login-container {
-      max-width: 420px;
-      margin: 100px auto;
-      padding: 40px 30px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      animation: fadeIn 0.8s ease;
-    }
-    .login-logo {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .login-logo img {
-      width: 150px;
-      height: 130px;
-    }
-    .btn-sigap {
-      background-color: #b30000;
-      border: none;
-    }
-    .btn-sigap:hover {
-      background-color: #900000;
-    }
-    h3 {
-      color: #b30000;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 25px;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-red-700 to-red-500 font-sans min-h-screen flex items-center justify-center">
 
-  <div class="login-container">
-    <div class="login-logo">
-      <img src="img/gmls_logo_red.png" alt="Logo GMLS">
+  <div class="w-full max-w-md mx-auto bg-white rounded-xl shadow-2xl px-8 py-10 animate-[fadeIn_0.8s_ease]">
+    
+    <!-- Logo -->
+    <div class="flex justify-center mb-5">
+      <img src="img/gmls_logo_red.png" alt="Logo GMLS" class="w-[150px] h-[130px]">
     </div>
 
-    <h3>Login ke SIGAP Desa</h3>
+    <!-- Title -->
+    <h3 class="text-red-700 font-bold text-center text-xl mb-6">
+      Login ke SIGAP Desa
+    </h3>
 
+    <!-- Error -->
     <?php if (isset($_SESSION['error'])): ?>
-      <div class="alert alert-danger text-center">
+      <div class="bg-red-100 text-red-700 text-center px-4 py-2 rounded mb-4">
         <?= $_SESSION['error']; unset($_SESSION['error']); ?>
       </div>
     <?php endif; ?>
 
-    <form action="proses_login.php" method="POST">
-      <div class="form-group">
-        <label for="tipe"><i class="fas fa-user-shield"></i> Login Sebagai:</label>
-        <select name="tipe" id="tipe" class="form-control" required>
+    <!-- Form -->
+    <form action="proses_login.php" method="POST" class="space-y-4">
+      
+      <div>
+        <label for="tipe" class="block text-sm font-medium text-gray-700 mb-1">
+          <i class="fas fa-user-shield mr-1"></i> Login Sebagai:
+        </label>
+        <select name="tipe" id="tipe" required
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-600">
           <option value="">-- Pilih Tipe Akun --</option>
           <option value="admin">Admin</option>
           <option value="warga">Warga</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label><i class="fas fa-id-card"></i> Username / NIK:</label>
-        <input type="text" name="username" class="form-control" placeholder="Masukkan username atau NIK" required>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          <i class="fas fa-id-card mr-1"></i> Username / NIK:
+        </label>
+        <input type="text" name="username" required
+          placeholder="Masukkan username atau NIK"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-600">
       </div>
 
-      <div class="form-group">
-        <label><i class="fas fa-lock"></i> Password / Tanggal Lahir:</label>
-        <input type="password" name="password" class="form-control" placeholder="Contoh: 23082003" required>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+          <i class="fas fa-lock mr-1"></i> Password / Tanggal Lahir:
+        </label>
+        <input type="password" name="password" required
+          placeholder="Contoh: 23082003"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-600">
       </div>
 
-      <button type="submit" class="btn btn-sigap btn-block text-white">Login</button>
+      <button type="submit"
+        class="w-full bg-red-700 hover:bg-red-800 text-white font-medium py-2 rounded-md transition">
+        Login
+      </button>
     </form>
 
-    <p class="text-center mt-4 text-muted small">© <?= date('Y'); ?> SIGAP Desa - GMLS</p>
+    <!-- Footer -->
+    <p class="text-center mt-6 text-gray-500 text-sm">
+      © <?= date('Y'); ?> SIGAP Desa - GMLS
+    </p>
   </div>
+
+  <!-- Custom animation (since Tailwind doesn't include fadeIn by default) -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 
 </body>
 </html>
