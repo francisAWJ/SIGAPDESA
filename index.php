@@ -28,10 +28,10 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
 
 <body class="bg-gray-100">
 
-<div class="flex min-h-screen">
+<div class="flex flex-col md:flex-row min-h-screen">
 
     <!-- Sidebar -->
-    <aside class="w-64 bg-gradient-to-b from-rose-600 to-rose-400 text-white flex flex-col">
+    <aside class="w-full md:w-64 bg-gradient-to-b from-rose-600 to-rose-400 text-white flex flex-col">
         
         <!-- Logo -->
         <div class="flex items-center justify-center py-4">
@@ -73,7 +73,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     </aside>
 
     <!-- Content -->
-    <main class="flex-1 p-6">
+    <main class="flex-1 p-4 md:p-6">
         <h1 class="text-2xl font-semibold text-gray-800 mb-4">
             Selamat Datang di SIGAP
         </h1>
