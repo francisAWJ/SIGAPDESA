@@ -7,84 +7,85 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     header("Location: login.php");
     exit();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home - SIGAP</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link href="output.css" rel="stylesheet">
+
+    <!-- Font Awesome (optional) -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
 </head>
 
-<body id="page-top">
+<body class="bg-gray-100">
 
-    <div id="wrapper">
+<div class="flex min-h-screen">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <div class="sidebar-brand-icon">
-                    <img src="img/gmls_logo.png" alt="Logo SIGAP DESA" style="width: 180px; height: 60px;">
-                </div>
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gradient-to-b from-rose-700 to-rose-500 text-white flex flex-col">
+        
+        <!-- Logo -->
+        <div class="flex items-center justify-center py-4 border-b border-gray-700">
+            <img src="img/gmls_logo.png" alt="Logo SIGAP DESA" class="w-40 h-auto">
+        </div>
+
+        <!-- Menu -->
+        <nav class="flex-1 px-4 py-6 space-y-2">
+
+            <a href="index.php" class="flex items-center gap-3 px-3 py-2 rounded bg-gray-800">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
             </a>
 
-            <hr class="sidebar-divider my-0">
+            <a href="input_data.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <i class="fas fa-user-edit"></i>
+                <span>Input Data Penduduk</span>
+            </a>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php">
-                    <i class="fas fa-fw fa-home"></i><span>Home</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="input_data.php">
-                    <i class="fas fa-fw fa-user-edit"></i><span>Input Data Penduduk</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="visual_data.php">
-                    <i class="fas fa-fw fa-chart-bar"></i><span>Visual Data</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="titik_evakuasi.php">
-                    <i class="fas fa-fw fa-map-marker-alt"></i><span>Titik Evakuasi</span>
-                </a>
-            </li>
+            <a href="visual_data.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <i class="fas fa-chart-bar"></i>
+                <span>Visual Data</span>
+            </a>
 
-            <hr class="sidebar-divider">
+            <a href="titik_evakuasi.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Titik Evakuasi</span>
+            </a>
 
-            <!-- Tombol Logout -->
-            <li class="nav-item">
-                <a class="nav-link text-danger" href="logout.php" onclick="return confirm('Yakin ingin logout?');">
-                    <i class="fas fa-sign-out-alt"></i><span>Logout</span>
-                </a>
-            </li>
-        </ul>
-        <!-- End Sidebar -->
+            <!-- Divider -->
+            <div class="border-t border-gray-700 my-4"></div>
 
+            <!-- Logout -->
+            <a href="logout.php"
+               onclick="return confirm('Yakin ingin logout?');"
+               class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
 
-        <!-- Content -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content" class="p-4">
-                <h1 class="h3 mb-4 text-gray-800">Selamat Datang di SIGAP</h1>
-                <p>Gunakan menu di sidebar untuk navigasi fitur SIGAP seperti input data penduduk, visualisasi data, dan
-                    titik evakuasi.</p>
-            </div>
-        </div>
-        <!-- End Content -->
-    </div>
-    <!-- End Wrapper -->
+        </nav>
+    </aside>
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/sb-admin-2.min.js"></script>
+    <!-- Content -->
+    <main class="flex-1 p-6">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">
+            Selamat Datang di SIGAP
+        </h1>
+        <p class="text-gray-600">
+            Gunakan menu di sidebar untuk navigasi fitur SIGAP seperti input data penduduk, visualisasi data, dan titik evakuasi.
+        </p>
+    </main>
+
+</div>
 
 </body>
-
 </html>
