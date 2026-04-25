@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Mozilla Text", ui-sans-serif, system-ui, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap');

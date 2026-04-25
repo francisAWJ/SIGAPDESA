@@ -8,13 +8,17 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - SIGAP Desa</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS -->
   <link href="./output.css" rel="stylesheet">
 
   <!-- FontAwesome untuk icon -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-b from-rose-500 to-rose-300 font-sans min-h-screen flex items-center justify-center">
+<body class="bg-gradient-to-b from-rose-600 to-rose-300 font-sans min-h-screen flex items-center justify-center">
 
   <div class="w-full max-w-md mx-4 sm:mx-auto bg-white rounded-xl shadow-2xl px-6 sm:px-8 py-8 sm:py-10">
     

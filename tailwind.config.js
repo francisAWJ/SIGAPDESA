@@ -1,7 +1,12 @@
-export default {
-  content: ["./**/*.html", "./**/*.php", "./**/*.js"],
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./**/*.php"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['"Mozilla Text"', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
