@@ -278,43 +278,52 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
                     <!-- Data Identitas -->
-                    <div class="form-section">
-                        <h5><i class="fas fa-id-card"></i> Data Identitas</h5>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label>NIK <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="nik" maxlength="16" pattern="\d{16}"
-                                    required placeholder="16 digit NIK">
-                                <small class="form-text text-muted">Harus 16 digit angka</small>
+                    <div class="bg-gray-50 p-5 rounded-lg mb-5">
+                        <h5 class="text-rose-600 font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-id-card"></i> Data Identitas
+                        </h5>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium">NIK <span class="text-red-500">*</span></label>
+                                <input type="text" name="nik" maxlength="16" pattern="\d{16}" required
+                                    class="w-full mt-1 p-2 border rounded focus:ring-2 focus:ring-rose-400"
+                                    placeholder="16 digit NIK">
+                                <p class="text-xs text-gray-500">Harus 16 digit angka</p>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label>Nama Lengkap <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="nama_lengkap" required
+
+                            <div>
+                                <label class="block text-sm font-medium">Nama Lengkap <span class="text-red-500">*</span></label>
+                                <input type="text" name="nama_lengkap" required
+                                    class="w-full mt-1 p-2 border rounded focus:ring-2 focus:ring-rose-400"
                                     placeholder="Sesuai KTP">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label>Tempat Lahir</label>
-                                <select class="form-control select2" name="tempat_lahir" required>
+
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div>
+                                <label class="block text-sm font-medium">Tempat Lahir</label>
+                                <select name="tempat_lahir" required
+                                    class="w-full mt-1 p-2 border rounded select2">
                                     <option value="">-- Pilih Kota/Kabupaten --</option>
-                                    <?php 
-                                    mysqli_data_seek($kota_result, 0);
-                                    while ($kota = mysqli_fetch_assoc($kota_result)): 
-                                    ?>
-                                        <option value="<?php echo htmlspecialchars($kota['nama_kabupaten']); ?>">
-                                            <?php echo htmlspecialchars($kota['nama_kabupaten']); ?>
+                                    <?php while ($kota = mysqli_fetch_assoc($kota_result)): ?>
+                                        <option value="<?= htmlspecialchars($kota['nama_kabupaten']); ?>">
+                                            <?= htmlspecialchars($kota['nama_kabupaten']); ?>
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label>Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tanggal_lahir">
+
+                            <div>
+                                <label class="block text-sm font-medium">Tanggal Lahir</label>
+                                <input type="date" name="tanggal_lahir"
+                                    class="w-full mt-1 p-2 border rounded">
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label>Jenis Kelamin <span class="text-danger">*</span></label>
-                                <select class="form-control" name="jenis_kelamin" required>
+
+                            <div>
+                                <label class="block text-sm font-medium">Jenis Kelamin <span class="text-red-500">*</span></label>
+                                <select name="jenis_kelamin" required
+                                    class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
                                     <option value="L">Laki-laki</option>
                                     <option value="P">Perempuan</option>
