@@ -542,166 +542,200 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                     </div>
 
                     <!-- Data Alamat -->
-                    <div class="form-section">
-                        <h5><i class="fas fa-map-marker-alt"></i> Data Alamat</h5>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label>Alamat Lengkap</label>
-                                <textarea class="form-control" name="alamat_lengkap" rows="2"
-                                    placeholder="Contoh: Jl. Mawar No.12"></textarea>
-                            </div>
+                    <div class="bg-gray-50 p-5 rounded-lg mb-5">
+                        <h5 class="text-rose-600 font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt"></i> Data Alamat
+                        </h5>
 
-                            <div class="col-md-4 mb-3">
-                                <label>Provinsi</label>
-                                <select class="form-control" name="provinsi" id="provinsi" required>
+                        <!-- Alamat -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium">Alamat Lengkap</label>
+                            <textarea name="alamat_lengkap" rows="2"
+                                class="w-full mt-1 p-2 border rounded focus:ring-2 focus:ring-rose-400"
+                                placeholder="Contoh: Jl. Mawar No.12"></textarea>
+                        </div>
+
+                        <!-- Wilayah -->
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <!-- Provinsi -->
+                            <div>
+                                <label class="block text-sm font-medium">Provinsi</label>
+                                <select name="provinsi" id="provinsi" required
+                                    class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Provinsi --</option>
                                     <?php 
                                     mysqli_data_seek($provinsi_result, 0);
                                     while ($p = mysqli_fetch_assoc($provinsi_result)): 
                                     ?>
-                                        <option value="<?php echo $p['id_provinsi']; ?>">
-                                            <?php echo $p['nama_provinsi']; ?>
+                                        <option value="<?= $p['id_provinsi']; ?>">
+                                            <?= $p['nama_provinsi']; ?>
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
                             </div>
 
-                            <div class="col-md-4 mb-3">
-                                <label>Kabupaten / Kota</label>
-                                <select class="form-control" name="kabupaten" id="kabupaten" required>
+                            <!-- Kabupaten -->
+                            <div>
+                                <label class="block text-sm font-medium">Kabupaten / Kota</label>
+                                <select name="kabupaten" id="kabupaten" required
+                                    class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Kabupaten --</option>
                                 </select>
                             </div>
 
-                            <div class="col-md-4 mb-3">
-                                <label>Kecamatan</label>
-                                <select class="form-control" name="kecamatan" id="kecamatan" required>
+                            <!-- Kecamatan -->
+                            <div>
+                                <label class="block text-sm font-medium">Kecamatan</label>
+                                <select name="kecamatan" id="kecamatan" required
+                                    class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Kecamatan --</option>
                                 </select>
                             </div>
+                        </div>
 
-                            <div class="col-md-4 mb-3">
-                                <label>Desa</label>
-                                <select class="form-control" name="desa" id="desa">
+                        <!-- Desa + RT RW + Konstruksi -->
+                        <div class="grid md:grid-cols-4 gap-4 mt-4">
+                            <!-- Desa -->
+                            <div>
+                                <label class="block text-sm font-medium">Desa</label>
+                                <select name="desa" id="desa"
+                                    class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Desa --</option>
                                 </select>
                             </div>
 
-                            <div class="col-md-2 mb-3">
-                                <label>RT</label>
-                                <select class="form-control" name="id_rt">
+                            <!-- RT -->
+                            <div>
+                                <label class="block text-sm font-medium">RT</label>
+                                <select name="id_rt" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- RT --</option>
                                     <?php 
                                     mysqli_data_seek($rt_result, 0);
                                     while ($r = mysqli_fetch_assoc($rt_result)): 
                                     ?>
-                                        <option value="<?php echo $r['id_rt']; ?>">
-                                            RT <?php echo htmlspecialchars($r['nomor_rt']); ?>
+                                        <option value="<?= $r['id_rt']; ?>">
+                                            RT <?= htmlspecialchars($r['nomor_rt']); ?>
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
                             </div>
 
-                            <div class="col-md-2 mb-3">
-                                <label>RW</label>
-                                <select class="form-control" name="id_rw">
+                            <!-- RW -->
+                            <div>
+                                <label class="block text-sm font-medium">RW</label>
+                                <select name="id_rw" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- RW --</option>
                                     <?php 
                                     mysqli_data_seek($rw_result, 0);
                                     while ($rw = mysqli_fetch_assoc($rw_result)): 
                                     ?>
-                                        <option value="<?php echo $rw['id_rw']; ?>">
-                                            RW <?php echo htmlspecialchars($rw['nomor_rw']); ?>
+                                        <option value="<?= $rw['id_rw']; ?>">
+                                            RW <?= htmlspecialchars($rw['nomor_rw']); ?>
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
                             </div>
 
-                            <div class="col-md-4 mb-3">
-                                <label>Jenis Konstruksi</label>
-                                <select class="form-control" name="jenis_konstruksi">
+                            <!-- Konstruksi -->
+                            <div>
+                                <label class="block text-sm font-medium">Jenis Konstruksi</label>
+                                <select name="jenis_konstruksi"
+                                    class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
                                     <option value="Kayu">Kayu</option>
                                     <option value="Semi Permanen">Semi Permanen</option>
                                     <option value="Permanen">Permanen</option>
                                 </select>
                             </div>
+                        </div>
 
-                            <div class="col-md-4 mb-3">
-                                <label class="form-label fw-semibold">Kerawanan Bencana</label>
-                                <div class="form-check mb-1">
-                                    <input class="form-check-input" type="checkbox" name="status_zona_tsunami[]"
-                                        value="Tsunami" id="chkTsunami">
-                                    <label class="form-check-label" for="chkTsunami">Tsunami</label>
-                                </div>
-                                <div class="form-check mb-1">
-                                    <input class="form-check-input" type="checkbox" name="status_zona_tsunami[]"
-                                        value="Longsor" id="chkLongsor">
-                                    <label class="form-check-label" for="chkLongsor">Longsor</label>
-                                </div>
-                                <div class="form-check mb-1">
-                                    <input class="form-check-input" type="checkbox" name="status_zona_tsunami[]"
-                                        value="Banjir" id="chkBanjir">
-                                    <label class="form-check-label" for="chkBanjir">Banjir</label>
-                                </div>
-                                <div class="form-check mb-1">
-                                    <input class="form-check-input" type="checkbox" name="status_zona_tsunami[]"
-                                        value="Pergerakan Tanah" id="chkPergerakanTanah">
-                                    <label class="form-check-label" for="chkPergerakanTanah">Pergerakan Tanah</label>
-                                </div>
-                                <div class="form-check mb-1">
-                                    <input class="form-check-input" type="checkbox" name="status_zona_tsunami[]"
-                                        value="Gunung Meletus" id="chkGunungMeletus">
-                                    <label class="form-check-label" for="chkGunungMeletus">Gunung Meletus</label>
-                                </div>
-                                <div class="form-check mb-1">
-                                    <input class="form-check-input" type="checkbox" name="status_zona_tsunami[]"
-                                        value="Kekeringan" id="chkKekeringan">
-                                    <label class="form-check-label" for="chkKekeringan">Kekeringan</label>
-                                </div>
-                                <div class="form-check mb-1">
-                                    <input class="form-check-input" type="checkbox" name="status_zona_tsunami[]"
-                                        value="Puting Beliung" id="chkPutingBeliung">
-                                    <label class="form-check-label" for="chkPutingBeliung">Puting Beliung</label>
-                                </div>
+                        <!-- Kerawanan Bencana -->
+                        <div class="mt-6">
+                            <label class="block text-sm font-semibold mb-2">Kerawanan Bencana</label>
+
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <label class="flex items-center gap-2">
+                                    <input type="checkbox" name="status_zona_tsunami[]" value="Tsunami" class="accent-rose-500">
+                                    Tsunami
+                                </label>
+
+                                <label class="flex items-center gap-2">
+                                    <input type="checkbox" name="status_zona_tsunami[]" value="Longsor" class="accent-rose-500">
+                                    Longsor
+                                </label>
+
+                                <label class="flex items-center gap-2">
+                                    <input type="checkbox" name="status_zona_tsunami[]" value="Banjir" class="accent-rose-500">
+                                    Banjir
+                                </label>
+
+                                <label class="flex items-center gap-2">
+                                    <input type="checkbox" name="status_zona_tsunami[]" value="Pergerakan Tanah" class="accent-rose-500">
+                                    Pergerakan Tanah
+                                </label>
+
+                                <label class="flex items-center gap-2">
+                                    <input type="checkbox" name="status_zona_tsunami[]" value="Gunung Meletus" class="accent-rose-500">
+                                    Gunung Meletus
+                                </label>
+
+                                <label class="flex items-center gap-2">
+                                    <input type="checkbox" name="status_zona_tsunami[]" value="Kekeringan" class="accent-rose-500">
+                                    Kekeringan
+                                </label>
+
+                                <label class="flex items-center gap-2">
+                                    <input type="checkbox" name="status_zona_tsunami[]" value="Puting Beliung" class="accent-rose-500">
+                                    Puting Beliung
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Koordinat + Map -->
+                        <div class="mt-6">
+                            <label class="block text-sm font-semibold mb-2">Titik Koordinat Lokasi Rumah</label>
+
+                            <!-- Search -->
+                            <input type="text" id="searchBox"
+                                class="w-full p-2 border rounded mb-2"
+                                placeholder="Cari alamat...">
+
+                            <div id="suggestions"
+                                class="absolute z-50 bg-white w-full border rounded shadow hidden">
                             </div>
 
-                            <!-- Titik Koordinat -->
-                            <div class="col-md-12 mb-3 mt-3">
-                                <label class="fw-semibold">Titik Koordinat Lokasi Rumah</label>
+                            <!-- Map -->
+                            <div id="map"
+                                class="h-72 w-full rounded border mt-2">
+                            </div>
 
-                                <!-- Search Box -->
-                                <input type="text" id="searchBox" class="form-control mb-2" placeholder="Cari alamat...">
-                                <div id="suggestions"
-                                    style="position:absolute; z-index:9999; background:white; width:100%; border:1px solid #ccc; display:none;">
+                            <!-- Lat Long -->
+                            <div class="grid md:grid-cols-2 gap-4 mt-3">
+                                <div>
+                                    <label class="block text-sm">Latitude</label>
+                                    <input type="text" id="latitude" name="latitude"
+                                        class="w-full p-2 border rounded bg-gray-100" readonly>
                                 </div>
 
-                                <!-- MAP -->
-                                <div id="map" style="height: 300px; width: 100%; border-radius: 8px; border: 1px solid #ccc;">
-                                </div>
-
-                                <!-- Latitude & Longitude -->
-                                <div class="row mt-2">
-                                    <div class="col-md-6">
-                                        <label>Latitude</label>
-                                        <input type="text" id="latitude" name="latitude" class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Longitude</label>
-                                        <input type="text" id="longitude" name="longitude" class="form-control" readonly>
-                                    </div>
+                                <div>
+                                    <label class="block text-sm">Longitude</label>
+                                    <input type="text" id="longitude" name="longitude"
+                                        class="w-full p-2 border rounded bg-gray-100" readonly>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Submit Buttons -->
-                    <div class="text-right">
-                        <button type="reset" class="btn btn-secondary">
-                            <i class="fas fa-redo"></i> Reset Form
+                    <div class="flex justify-end gap-3">
+                        <button type="reset"
+                            class="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">
+                            Reset
                         </button>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save"></i> Simpan Data Penduduk
+
+                        <button type="submit"
+                            class="px-4 py-2 bg-rose-600 text-white rounded hover:bg-rose-700">
+                            Simpan
                         </button>
                     </div>
                 </form>
