@@ -204,7 +204,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
     </style>
 </head>
 
-<body id="page-top">
+<body class="bg-gray-100">
     <div class="flex flex-col md:flex-row min-h-screen">
 
         <!-- ==================== SIDEBAR ==================== -->
@@ -252,11 +252,21 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
         <main class="flex-1 p-4 md:p-6">
 
                 <!-- Header -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Input Data Penduduk</h1>
-                    <a href="daftar_warga.php" class="btn btn-sm btn-primary shadow-sm">
-                        <i class="fas fa-list fa-sm text-white-50"></i> Lihat Daftar Warga
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-3">
+
+                    <!-- Title -->
+                    <h1 class="text-2xl font-semibold text-gray-800">
+                        Input Data Penduduk
+                    </h1>
+
+                    <!-- Button -->
+                    <a href="daftar_warga.php"
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 text-white text-sm font-medium rounded hover:bg-rose-700 transition shadow-sm w-fit">
+
+                        <i class="fas fa-list"></i>
+                        <span>Lihat Daftar Warga</span>
                     </a>
+
                 </div>
 
                 <!-- Alert Messages -->
