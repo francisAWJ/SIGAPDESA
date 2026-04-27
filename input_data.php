@@ -161,7 +161,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
     <!-- CSS -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -201,49 +201,51 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 </head>
 
 <body id="page-top">
-    <div id="wrapper">
+    <div class="flex flex-col md:flex-row min-h-screen">
 
         <!-- ==================== SIDEBAR ==================== -->
-        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <div class="sidebar-brand-icon">
-                    <img src="img/gmls_logo.png" alt="Logo SIGAP DESA" style="width: 180px; height: 60px;">
-                </div>
-            </a>
-            <hr class="sidebar-divider my-0">
+        <aside class="w-full md:w-64 bg-gradient-to-b from-rose-600 to-rose-400 text-white flex flex-col">
+    
+            <!-- Logo -->
+            <div class="flex items-center justify-center py-4">
+                <img src="img/gmls_logo.png" alt="Logo SIGAP DESA" class="w-40 h-auto">
+            </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="index.php">
-                    <i class="fas fa-fw fa-home"></i><span>Home</span>
-                </a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="input_data.php">
-                    <i class="fas fa-fw fa-user-edit"></i><span>Input Data Penduduk</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="visual_data.php">
-                    <i class="fas fa-fw fa-chart-bar"></i><span>Visual Data</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="titik_evakuasi.php">
-                    <i class="fas fa-fw fa-map-marker-alt"></i><span>Titik Evakuasi</span>
-                </a>
-            </li>
-            <hr class="sidebar-divider">
+            <!-- Menu -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
 
-            <li class="nav-item">
-                <a class="nav-link text-danger" href="logout.php">
-                    <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+                <a href="index.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
                 </a>
-            </li>
-        </ul>
+
+                <a href="input_data.php" class="flex items-center gap-3 px-3 py-2 rounded bg-rose-800">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Input Data Penduduk</span>
+                </a>
+
+                <a href="visual_data.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Visual Data</span>
+                </a>
+
+                <a href="titik_evakuasi.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Titik Evakuasi</span>
+                </a>
+
+                <a href="logout.php"
+                onclick="return confirm('Yakin ingin logout?');"
+                class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+
+            </nav>
+        </aside>
 
         <!-- ==================== CONTENT ==================== -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content" class="p-4">
+        <main class="flex-1 p-4 md:p-6">
 
                 <!-- Header -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
