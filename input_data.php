@@ -343,7 +343,11 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                 <label class="block text-sm font-medium">Golongan Darah</label>
                                 <select name="golongan_darah" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
-                                    <option>A</option><option>B</option><option>AB</option><option>O</option><option>-</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="AB">AB</option>
+                                    <option value="O">O</option>
+                                    <option value="-">Tidak Tahu</option>
                                 </select>
                             </div>
 
