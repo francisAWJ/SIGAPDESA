@@ -355,8 +355,12 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                 <label class="block text-sm font-medium">Agama</label>
                                 <select name="agama" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
-                                    <option>Islam</option><option>Kristen</option><option>Katolik</option>
-                                    <option>Hindu</option><option>Buddha</option><option>Konghucu</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Katolik">Katolik</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Buddha">Buddha</option>
+                                    <option value="Konghucu">Konghucu</option>
                                 </select>
                             </div>
 
