@@ -333,40 +333,35 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                     </div>
 
                     <!-- Data Pribadi -->
-                    <div class="form-section">
-                        <h5><i class="fas fa-user"></i> Data Pribadi</h5>
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label>Golongan Darah <span class="info-badge">Medis</span></label>
-                                <select class="form-control" name="golongan_darah">
+                    <div class="bg-gray-50 p-5 rounded-lg mb-5">
+                        <h5 class="text-rose-600 font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-user"></i> Data Pribadi
+                        </h5>
+
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium">Golongan Darah</label>
+                                <select name="golongan_darah" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="AB">AB</option>
-                                    <option value="O">O</option>
-                                    <option value="-">Tidak Tahu</option>
+                                    <option>A</option><option>B</option><option>AB</option><option>O</option><option>-</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label>Agama</label>
-                                <select class="form-control" name="agama">
+
+                            <div>
+                                <label class="block text-sm font-medium">Agama</label>
+                                <select name="agama" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
-                                    <option value="Islam">Islam</option>
-                                    <option value="Kristen">Kristen</option>
-                                    <option value="Katolik">Katolik</option>
-                                    <option value="Hindu">Hindu</option>
-                                    <option value="Buddha">Buddha</option>
-                                    <option value="Konghucu">Konghucu</option>
+                                    <option>Islam</option><option>Kristen</option><option>Katolik</option>
+                                    <option>Hindu</option><option>Buddha</option><option>Konghucu</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label>Status Perkawinan</label>
-                                <select class="form-control" name="status_perkawinan">
+
+                            <div>
+                                <label class="block text-sm font-medium">Status Perkawinan</label>
+                                <select name="status_perkawinan" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
-                                    <option value="Belum Kawin">Belum Kawin</option>
-                                    <option value="Kawin">Kawin</option>
-                                    <option value="Cerai Hidup">Cerai Hidup</option>
-                                    <option value="Cerai Mati">Cerai Mati</option>
+                                    <option>Belum Kawin</option><option>Kawin</option>
+                                    <option>Cerai Hidup</option><option>Cerai Mati</option>
                                 </select>
                             </div>
                         </div>
