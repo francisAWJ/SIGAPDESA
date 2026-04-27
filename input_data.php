@@ -368,8 +368,10 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                 <label class="block text-sm font-medium">Status Perkawinan</label>
                                 <select name="status_perkawinan" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
-                                    <option>Belum Kawin</option><option>Kawin</option>
-                                    <option>Cerai Hidup</option><option>Cerai Mati</option>
+                                    <option value="Belum Kawin">Belum Kawin</option>
+                                    <option value="Kawin">Kawin</option>
+                                    <option value="Cerai Hidup">Cerai Hidup</option>
+                                    <option value="Cerai Mati">Cerai Mati</option>
                                 </select>
                             </div>
                         </div>
