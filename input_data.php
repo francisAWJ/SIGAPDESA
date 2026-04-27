@@ -159,6 +159,10 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Input Data Penduduk - SIGAP</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap" rel="stylesheet">
+
     <!-- CSS -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="./output.css" rel="stylesheet">
