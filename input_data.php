@@ -289,7 +289,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                     <!-- Data Identitas -->
                     <div class="bg-gray-50 p-5 rounded-lg mb-5">
-                        <h5 class="text-rose-600 font-semibold mb-4 flex items-center gap-2">
+                        <h5 class="text-blue-600 font-semibold mb-4 flex items-center gap-2">
                             <i class="fas fa-id-card"></i> Data Identitas
                         </h5>
 
@@ -314,7 +314,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                             <div>
                                 <label class="block text-sm font-medium">Tempat Lahir</label>
                                 <select name="tempat_lahir" required
-                                    class="w-full mt-1 p-2 border rounded select2">
+                                    class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Kota/Kabupaten --</option>
                                     <?php while ($kota = mysqli_fetch_assoc($kota_result)): ?>
                                         <option value="<?= htmlspecialchars($kota['nama_kabupaten']); ?>">
