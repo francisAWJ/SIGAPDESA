@@ -437,28 +437,31 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                     </div>
 
                     <!-- Data Kesehatan & Kondisi Khusus -->
-                    <div class="form-section">
-                        <h5><i class="fas fa-heartbeat"></i> Data Kesehatan & Kondisi Khusus</h5>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="status_kehamilan"
-                                        name="status_kehamilan" onchange="togglePerkiraanLahir()">
-                                    <label class="custom-control-label" for="status_kehamilan">
-                                        Sedang Hamil <span class="info-badge">Prioritas Evakuasi</span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3" id="perkiraan_lahir_group" style="display:none;">
-                                <label>Perkiraan Tanggal Lahir (HPL)</label>
-                                <input type="date" class="form-control" name="perkiraan_lahir">
+                    <div class="bg-gray-50 p-5 rounded-lg mb-5">
+                        <h5 class="text-rose-600 font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-heartbeat"></i> Data Kesehatan
+                        </h5>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" name="status_kehamilan" id="status_kehamilan"
+                                    class="accent-rose-500" onchange="togglePerkiraanLahir()">
+                                Sedang Hamil
+                            </label>
+
+                            <div id="perkiraan_lahir_group" class="hidden">
+                                <label class="block text-sm font-medium">Perkiraan Lahir</label>
+                                <input type="date" name="perkiraan_lahir"
+                                    class="w-full p-2 border rounded">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label>Kategori Disabilitas <span class="info-badge">Asesmen Evakuasi</span></label>
-                                <select class="form-control" name="kategori_disabilitas" id="kategori_disabilitas"
-                                    onchange="toggleKeteranganDisabilitas()">
+
+                        <div class="grid md:grid-cols-2 gap-4 mt-4">
+                            <div>
+                                <label class="block text-sm font-medium">Kategori Disabilitas</label>
+                                <select name="kategori_disabilitas" id="kategori_disabilitas"
+                                    onchange="toggleKeteranganDisabilitas()"
+                                    class="w-full p-2 border rounded">
                                     <option value="Tidak Ada">Tidak Ada</option>
                                     <option value="Fisik">Fisik (Mobilitas Terbatas)</option>
                                     <option value="Intelektual">Intelektual</option>
@@ -466,10 +469,11 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                     <option value="Sensorik">Sensorik (Pendengaran/Penglihatan)</option>
                                 </select>
                             </div>
-                            <div class="col-md-6 mb-3" id="keterangan_disabilitas_group" style="display:none;">
-                                <label>Keterangan Disabilitas</label>
-                                <textarea class="form-control" name="keterangan_disabilitas" rows="2"
-                                    placeholder="Contoh: Menggunakan kursi roda, Tuna rungu, dll"></textarea>
+
+                            <div id="keterangan_disabilitas_group" class="hidden">
+                                <label class="block text-sm font-medium">Keterangan Disabilitas</label>
+                                <textarea name="keterangan_disabilitas"
+                                    class="w-full p-2 border rounded"></textarea>
                             </div>
                         </div>
                     </div>
