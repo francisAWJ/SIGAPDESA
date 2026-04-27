@@ -479,7 +479,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                     </div>
 
                     <!-- Data Kartu Keluarga (BARU) -->
-                    <div class="form-section">
+                    <!-- <div class="form-section">
                         <h5><i class="fas fa-home"></i> Data Kartu Keluarga (KK)</h5>
                         <div class="kk-info-box">
                             <i class="fas fa-info-circle"></i> 
@@ -507,6 +507,68 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                     <i class="fas fa-user-tie"></i> Centang jika warga ini kepala dari KK yang diinput
                                 </small>
                             </div>
+                        </div>
+                    </div> -->
+
+                    <div class="bg-gray-50 p-5 rounded-lg mb-5">
+                        <h5 class="text-rose-600 font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-home"></i> Data Kartu Keluarga (KK)
+                        </h5>
+
+                        <!-- Info Box -->
+                        <div class="bg-yellow-100 border-l-4 border-yellow-400 text-yellow-800 p-4 rounded mb-4">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-info-circle mt-1"></i>
+                                <div>
+                                    <strong>Informasi:</strong> Masukkan nomor KK dan tentukan apakah warga ini adalah kepala keluarga.
+                                    Jika nomor KK sudah ada di sistem, warga akan ditambahkan ke KK tersebut.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            
+                            <!-- Nomor KK -->
+                            <div>
+                                <label class="block text-sm font-medium">
+                                    Nomor Kartu Keluarga (KK) <span class="text-red-500">*</span>
+                                </label>
+                                <input 
+                                    type="text"
+                                    name="nomor_kk"
+                                    id="nomor_kk"
+                                    maxlength="16"
+                                    pattern="\d{16}"
+                                    required
+                                    placeholder="16 digit Nomor KK"
+                                    class="w-full mt-1 p-2 border rounded focus:ring-2 focus:ring-rose-400"
+                                >
+                                <p class="text-xs text-gray-500 mt-1">Harus 16 digit angka</p>
+                            </div>
+
+                            <!-- Checkbox Kepala Keluarga -->
+                            <div class="flex flex-col justify-end">
+                                <div class="flex items-start gap-2">
+                                    <input 
+                                        type="checkbox"
+                                        id="is_kepala_keluarga"
+                                        name="is_kepala_keluarga"
+                                        class="mt-1 accent-rose-500"
+                                    >
+                                    <label for="is_kepala_keluarga" class="text-sm leading-tight">
+                                        <span class="font-semibold">Warga ini adalah Kepala Keluarga</span>
+                                        <span class="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded">
+                                            Kepala KK
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <p class="text-xs text-gray-500 mt-2 flex items-center gap-1">
+                                    <i class="fas fa-user-tie"></i>
+                                    Centang jika warga ini kepala dari KK yang diinput
+                                </p>
+                            </div>
+
                         </div>
                     </div>
 
