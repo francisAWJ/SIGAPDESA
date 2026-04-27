@@ -368,18 +368,24 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                     </div>
 
                     <!-- Data Kontak & Pekerjaan -->
-                    <div class="form-section">
-                        <h5><i class="fas fa-phone"></i> Data Kontak & Pekerjaan</h5>
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label>Nomor Telepon <span class="info-badge">Notifikasi</span></label>
-                                <input type="tel" class="form-control" name="nomor_telepon" placeholder="08xxxxxxxxxx">
-                                <small class="form-text text-muted">Penting untuk notifikasi bencana</small>
+                    <div class="bg-gray-50 p-5 rounded-lg mb-5">
+                        <h5 class="text-rose-600 font-semibold mb-4 flex items-center gap-2">
+                            <i class="fas fa-phone"></i> Data Kontak & Pekerjaan
+                        </h5>
+
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium">Nomor Telepon</label>
+                                <input type="tel" name="nomor_telepon"
+                                    class="w-full mt-1 p-2 border rounded"
+                                    placeholder="08xxxxxxxxxx">
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label>Pekerjaan</label>
-                                <select class="form-control" name="pekerjaan" required>
-                                    <option value="">-- Pilih Pekerjaan --</option>
+
+                            <div>
+                                <label class="block text-sm font-medium">Pekerjaan</label>
+                                <select name="pekerjaan" required
+                                    class="w-full mt-1 p-2 border rounded">
+                                    <option value="">-- Pilih --</option>
                                     <option value="Tidak Bekerja">Tidak Bekerja</option>
                                     <option value="Pelajar / Mahasiswa">Pelajar / Mahasiswa</option>
                                     <option value="PNS">PNS</option>
@@ -399,24 +405,24 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                     <option value="Lainnya">Lainnya</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label>Jenis Penghasilan</label>
-                                <select class="form-control" name="jenis_penghasilan">
+
+                            <div>
+                                <label class="block text-sm font-medium">Jenis Penghasilan</label>
+                                <select name="jenis_penghasilan" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
-                                    <option value="Tetap">Tetap (Gaji Bulanan)</option>
-                                    <option value="Tidak Tetap">Tidak Tetap (Harian/Proyek)</option>
+                                    <option value="Tetap">Tetap</option>
+                                    <option value="Tidak Tetap">Tidak Tetap</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label>Status Domisili</label>
-                                <select class="form-control" name="status_domisili">
-                                    <option value="Menetap">Menetap (Tinggal di Desa)</option>
-                                    <option value="Merantau">Merantau (KTP Desa, Kerja di Luar)</option>
-                                    <option value="Pendatang">Pendatang (Non-KTP Desa)</option>
-                                </select>
-                            </div>
+
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium">Status Domisili</label>
+                            <select name="status_domisili" class="w-full mt-1 p-2 border rounded">
+                                <option value="Menetap">Menetap</option>
+                                <option value="Merantau">Merantau</option>
+                                <option value="Pendatang">Pendatang</option>
+                            </select>
                         </div>
                     </div>
 
