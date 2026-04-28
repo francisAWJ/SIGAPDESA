@@ -502,13 +502,6 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                 <select name="nomor_kk" id="nomor_kk"
                                     class="w-full mt-1 p-2 border rounded focus:ring-2 focus:ring-rose-400">
                                     <option value="">-- Pilih KK (Jika Sudah Terdaftar) --</option>
-
-                                    <?php
-                                    // OPTIONAL: if you later pass existing KK list from DB
-                                    // foreach ($kk_list as $kk):
-                                    ?>
-                                    <!-- <option value="<?= $kk['nomor_kk']; ?>"><?= $kk['nomor_kk']; ?></option> -->
-                                    <?php // endforeach; ?>
                                 </select>
 
                                 <p class="text-xs text-gray-500 mt-1">
