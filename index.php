@@ -75,7 +75,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
     <!-- Content -->
     <main class="flex-1 p-4 md:p-6">
         <h1 class="text-2xl font-semibold text-gray-800 mb-4">
-            Selamat Datang di SIGAP
+            Selamat Datang di SIGAP DESA GMLS!
         </h1>
         <p class="text-gray-600">
             Gunakan menu di sidebar untuk navigasi fitur SIGAP seperti input data penduduk, visualisasi data, dan titik evakuasi.
