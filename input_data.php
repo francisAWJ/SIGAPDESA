@@ -502,13 +502,17 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                             <!-- NOMOR KK -->
                             <div>
                                 <label class="block text-sm font-medium">Nomor Kartu Keluarga (KK)</label>
-                                <select name="nomor_kk" id="nomor_kk"
+                                <!-- <select name="nomor_kk" id="nomor_kk"
                                     class="w-full mt-1 p-2 border rounded focus:ring-2 focus:ring-rose-400">
                                     <option value="">-- Pilih KK (Jika Sudah Terdaftar) --</option>
-                                </select>
+                                </select> -->
+
+                                <input type="text" name="nomor_kk" id="nomor_kk"
+                                    class="w-full p-2 border rounded mb-2"
+                                    maxlength="16" pattern="\d{16}" required placeholder="16 digit Nomor KK">
 
                                 <p class="text-xs text-gray-500 mt-1">
-                                    Jika KK belum terdaftar, kosongkan saja. 
+                                    Harus 16 digit angka 
                                 </p>
                             </div>
 
@@ -516,9 +520,10 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                             <div class="flex items-start mt-6">
                                 <label class="flex items-center gap-2 text-sm font-medium">
                                     <input type="checkbox"
+                                        id="is_kepala_keluarga"
                                         name="is_kepala_keluarga"
                                         class="accent-rose-500">
-                                    Warga ini adalah Kepala Keluarga
+                                    Centang jika warga ini kepala dari KK yang diinput
                                 </label>
                             </div>
 
