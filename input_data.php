@@ -597,8 +597,8 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                     mysqli_data_seek($rt_result, 0);
                                     while ($r = mysqli_fetch_assoc($rt_result)): 
                                     ?>
-                                        <option value="<?= $r['id_rt']; ?>">
-                                            RT <?= htmlspecialchars($r['nomor_rt']); ?>
+                                        <option value="<?php echo $r['id_rt']; ?>">
+                                            RT <?php echo htmlspecialchars($r['nomor_rt']); ?>
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
@@ -613,8 +613,8 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                     mysqli_data_seek($rw_result, 0);
                                     while ($rw = mysqli_fetch_assoc($rw_result)): 
                                     ?>
-                                        <option value="<?= $rw['id_rw']; ?>">
-                                            RW <?= htmlspecialchars($rw['nomor_rw']); ?>
+                                        <option value="<?php echo $rw['id_rw']; ?>">
+                                            RW <?php echo htmlspecialchars($rw['nomor_rw']); ?>
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
