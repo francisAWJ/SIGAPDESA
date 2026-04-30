@@ -316,9 +316,12 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                 <select name="tempat_lahir" required
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Kota/Kabupaten --</option>
-                                    <?php while ($kota = mysqli_fetch_assoc($kota_result)): ?>
-                                        <option value="<?= htmlspecialchars($kota['nama_kabupaten']); ?>">
-                                            <?= htmlspecialchars($kota['nama_kabupaten']); ?>
+                                    <?php 
+                                    mysqli_data_seek($kota_result, 0);
+                                    while ($kota = mysqli_fetch_assoc($kota_result)): 
+                                    ?>
+                                        <option value="<?php echo htmlspecialchars($kota['nama_kabupaten']); ?>">
+                                            <?php echo htmlspecialchars($kota['nama_kabupaten']); ?>
                                         </option>
                                     <?php endwhile; ?>
                                 </select>
