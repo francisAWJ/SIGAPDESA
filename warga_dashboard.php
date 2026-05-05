@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
         <!-- Data Pribadi Card -->
         <div class="bg-white rounded-xl shadow overflow-hidden mb-6">
-            <div class="bg-gradient-to-r from-rose-600 to-rose-400 px-5 py-3">
+            <div class="bg-gradient-to-r from-rose-600 to-rose-400 px-6 py-3">
                 <h6 class="text-white font-semibold">Data Pribadi</h6>
             </div>
             <div class="p-5">
