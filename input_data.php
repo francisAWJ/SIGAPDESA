@@ -694,8 +694,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                             </div>
 
                             <!-- Map -->
-                            <div id="map"
-                                class="h-72 w-full rounded border mt-2">
+                            <div id="map" style="height: 300px; width: 100%; border-radius: 8px; border: 1px solid #ccc;">
                             </div>
 
                             <!-- Lat Long -->
