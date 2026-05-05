@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
  
         <!-- Page Heading -->
         <h1 class="text-2xl font-semibold text-gray-800 mb-6">
-            Halo, <?= htmlspecialchars($warga['nama_lengkap']); ?> 👋
+            Halo, <?= htmlspecialchars($warga['nama_lengkap']); ?> 
         </h1>
  
         <!-- Data Pribadi Card -->
@@ -127,14 +127,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <!-- Buttons -->
                     <div class="flex flex-wrap gap-3 pt-2">
                         <button type="submit"
-                                class="px-5 py-2 bg-rose-600 hover:bg-rose-700 text-white text-sm font-medium rounded-lg transition">
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 text-white text-sm font-medium rounded hover:bg-rose-700 transition shadow-sm w-fit">
                             <i class="fas fa-save mr-2"></i>Update Data
                         </button>
-                        <a href="logout.php"
-                           onclick="return confirm('Yakin ingin logout?');"
-                           class="px-5 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm font-medium rounded-lg transition">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                        </a>
                     </div>
  
                 </form>
