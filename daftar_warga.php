@@ -16,120 +16,151 @@ include 'config.php';
 
     <!-- Tailwind -->
     <link href="output.css" rel="stylesheet">
-
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <style>
-        body { background-color: #f8f9fa; }
-        #content { max-width: 100%; padding: 20px; }
-        .table-responsive { overflow-x: auto; }
-
-        .table thead {
-            background-color: #b71c1c;
-            color: white;
+        body {
+            font-family: 'Mozilla Text', sans-serif;
+            background-color: #f8fafc;
         }
 
-        .btn-red {
-            background-color: #b71c1c;
-            color: #fff;
+        #content {
+            max-width: 100%;
         }
 
-        .btn-red:hover {
-            background-color: #7f0000;
-            color: white;
+        details#filterForm summary {
+            padding: 1.5rem 1.75rem;
         }
 
-        .filter-box {
-            padding: 15px;
-            border-radius: 8px;
-            background: #fff3f3;
-            border: 1px solid #ffcdd2;
+        #filterForm select,
+        #filterForm input {
+            border-radius: 1rem;
+            border: 1px solid #cbd5e1;
+            padding: 1rem 1.25rem;
+            background: #fff;
+            color: #0f172a;
+        }
+
+        #filterForm select option {
+            padding: 0.75rem 1rem;
+        }
+
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_info {
+            padding: 1rem 1.25rem;
+        }
+
+        .dataTables_wrapper .dataTables_filter {
+            margin-bottom: 0.75rem;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            border: none;
+            background: transparent;
+            padding: 0.6rem 1rem;
+            margin: 0 0.15rem;
+            color: #334155;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: #dc2626;
+            color: #fff !important;
+            border-radius: 0.75rem;
+        }
+
+        .dataTables_wrapper .dataTables_length select,
+        .dataTables_wrapper .dataTables_filter input {
+            border-radius: 1rem;
+            border: 1px solid #cbd5e1;
+            padding: 0.85rem 1rem;
+            background: #fff;
+            color: #0f172a;
         }
     </style>
 </head>
 
 <body>
 
-<div id="content">
+<div id="content" class="mx-auto min-h-screen px-4 py-6 sm:px-6 lg:px-8">
 
-    <div class="d-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0" style="color:#b71c1c;">Daftar Warga</h1>
-        <a href="input_data.php" class="btn btn-red btn-sm">
-            <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data Warga
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
+        <h1 class="text-3xl font-semibold tracking-tight text-red-900">Daftar Warga</h1>
+        <a href="input_data.php" class="inline-flex items-center gap-3 rounded-3xl bg-gradient-to-r from-rose-600 via-red-600 to-rose-500 px-4 py-2 text-base font-semibold text-white shadow-2xl shadow-rose-300 transition hover:from-rose-700 hover:via-red-700 hover:to-rose-600 focus:outline-none focus:ring-4 focus:ring-rose-200">
+            <i class="fas fa-plus"></i>
+            Tambah Data Warga
         </a>
     </div>
 
-    <!-- COLLAPSIBLE FILTER -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex justify-content-between">
-            <h6 class="m-0 font-weight-bold text-danger">Filter Data</h6>
-            <a href="#" data-toggle="collapse" data-target="#filterForm">Filter</a>
-        </div>
+    <details id="filterForm" class="mb-6 overflow-hidden rounded-3xl border border-red-100 bg-white shadow-sm px-6 md:px-8">
+        <summary class="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-red-900 transition hover:bg-red-50">
+            <span>Filter Data</span>
+            <span class="inline-flex items-center rounded-full border border-rose-200 bg-rose-100 px-3 py-1 text-sm font-semibold text-rose-700 transition hover:bg-rose-200">
+                Tampilkan / Sembunyikan
+            </span>
+        </summary>
+        <div class="border-t border-red-100 bg-red-50 px-6 md:px-8 py-5">
+            <div class="grid gap-4 lg:grid-cols-4">
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-slate-700">Provinsi</label>
+                    <select id="filterProvinsi" class="w-full rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-red-500 focus:ring-1 focus:ring-red-500">
+                        <option value="">Semua</option>
+                        <?php
+                        $q = $conn->query("SELECT * FROM provinsi ORDER BY nama_provinsi");
+                        while ($p = $q->fetch_assoc()) {
+                            echo "<option value='{$p['nama_provinsi']}' data-id='{$p['id_provinsi']}'>{$p['nama_provinsi']}</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
 
-        <div id="filterForm" class="collapse">
-            <div class="card-body filter-box">
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-slate-700">Kabupaten</label>
+                    <select id="filterKabupaten" class="w-full rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-red-500 focus:ring-1 focus:ring-red-500">
+                        <option value="">Semua</option>
+                    </select>
+                </div>
 
-                <div class="row">
-                    <div class="col-md-3">
-                        <label>Provinsi</label>
-                        <select id="filterProvinsi" class="form-control">
-                            <option value="">Semua</option>
-                            <?php
-                            $q = $conn->query("SELECT * FROM provinsi ORDER BY nama_provinsi");
-                            while ($p = $q->fetch_assoc()) {
-                                echo "<option value='{$p['nama_provinsi']}' data-id='{$p['id_provinsi']}'>{$p['nama_provinsi']}</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-slate-700">Kecamatan</label>
+                    <select id="filterKecamatan" class="w-full rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-red-500 focus:ring-1 focus:ring-red-500">
+                        <option value="">Semua</option>
+                    </select>
+                </div>
 
-                    <div class="col-md-3">
-                        <label>Kabupaten</label>
-                        <select id="filterKabupaten" class="form-control">
-                            <option value="">Semua</option>
-                        </select>
-                    </div>
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-slate-700">Desa</label>
+                    <select id="filterDesa" class="w-full rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-red-500 focus:ring-1 focus:ring-red-500">
+                        <option value="">Semua</option>
+                    </select>
+                </div>
 
-                    <div class="col-md-3">
-                        <label>Kecamatan</label>
-                        <select id="filterKecamatan" class="form-control">
-                            <option value="">Semua</option>
-                        </select>
-                    </div>
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-slate-700">RT</label>
+                    <input type="text" id="filterRT" class="w-full rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-red-500 focus:ring-1 focus:ring-red-500" placeholder="Contoh: 02">
+                </div>
 
-                    <div class="col-md-3">
-                        <label>Desa</label>
-                        <select id="filterDesa" class="form-control">
-                            <option value="">Semua</option>
-                        </select>
-                    </div>
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-slate-700">RW</label>
+                    <input type="text" id="filterRW" class="w-full rounded-2xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-red-500 focus:ring-1 focus:ring-red-500" placeholder="Contoh: 05">
+                </div>
 
-                    <div class="col-md-3 mt-3">
-                        <label>RT</label>
-                        <input type="text" id="filterRT" class="form-control" placeholder="Contoh: 02">
-                    </div>
-
-                    <div class="col-md-3 mt-3">
-                        <label>RW</label>
-                        <input type="text" id="filterRW" class="form-control" placeholder="Contoh: 05">
-                    </div>
-
-                    <div class="col-md-12 mt-3">
-                        <button id="applyFilter" class="btn btn-red btn-sm">Terapkan Filter</button>
-                        <button id="resetFilter" class="btn btn-secondary btn-sm">Reset</button>
-                    </div>
-
+                <div class="lg:col-span-4 flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
+                    <button id="applyFilter" class="inline-flex items-center justify-center rounded-2xl bg-red-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-red-800">
+                        Terapkan Filter
+                    </button>
+                    <button id="resetFilter" class="inline-flex items-center justify-center rounded-2xl bg-slate-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-600">
+                        Reset
+                    </button>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- END FILTER -->
+    </details>
 
-    <!-- TABLE -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
+    <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+        <div class="overflow-x-auto">
             <?php
             $sql = "SELECT 
                         w.id_warga, w.nik, w.nama_lengkap, w.tempat_lahir, w.tanggal_lahir, w.jenis_kelamin,
@@ -149,94 +180,77 @@ include 'config.php';
             $result = mysqli_query($conn, $sql);
             ?>
 
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped" id="wargaTable" width="100%">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>NIK</th>
-                            <th>Nama</th>
-                            <th>TTL</th>
-                            <th>JK</th>
-                            <th>Alamat</th>
-
-                            <th>RT</th>
-                            <th>RW</th>
-
-                            <th>Desa</th>
-                            <th>Kecamatan</th>
-                            <th>Kabupaten</th>
-                            <th>Provinsi</th>
-
-                            <th>Gol. Darah</th>
-                            <th>Agama</th>
-                            <th>Status</th>
-                            <th>Pekerjaan</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <?php $no = 1; while ($row = mysqli_fetch_assoc($result)) : ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= $row['nik'] ?></td>
-                            <td><?= $row['nama_lengkap'] ?></td>
-                            <td><?= $row['tempat_lahir'] ?> / <?= $row['tanggal_lahir'] ?></td>
-                            <td><?= $row['jenis_kelamin'] == 'L' ? 'Laki-laki' : 'Perempuan' ?></td>
-
-                            <td><?= $row['alamat_lengkap'] ?></td>
-                            <td><?= $row['nomor_rt'] ?></td>
-                            <td><?= $row['nomor_rw'] ?></td>
-
-                            <td><?= $row['nama_desa'] ?></td>
-                            <td><?= $row['nama_kecamatan'] ?></td>
-                            <td><?= $row['nama_kabupaten'] ?></td>
-                            <td><?= $row['nama_provinsi'] ?></td>
-
-                            <td><?= $row['golongan_darah'] ?></td>
-                            <td><?= $row['agama'] ?></td>
-                            <td><?= $row['status_perkawinan'] ?></td>
-                            <td><?= $row['pekerjaan'] ?></td>
-
-                            <td>
-                                <a href="edit_warga.php?id=<?= $row['id_warga'] ?>" class="btn btn-warning btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="hapus_warga.php?id=<?= $row['id_warga'] ?>" class="btn btn-red btn-sm" onclick="return confirm('Hapus data ini?')">
-                                    <i class="fas fa-trash"></i>
-                                </a>
+            <table class="min-w-full divide-y divide-slate-200 text-sm" id="wargaTable">
+                <thead class="bg-rose-600 text-white">
+                    <tr>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">#</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">NIK</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Nama</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">TTL</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">JK</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Alamat</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">RT</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">RW</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Desa</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Kecamatan</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Kabupaten</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Provinsi</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Gol. Darah</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Agama</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Status</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Pekerjaan</th>
+                        <th class="whitespace-nowrap px-4 py-3 text-left font-semibold uppercase tracking-wide">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 bg-white text-slate-700">
+                    <?php $no = 1; while ($row = mysqli_fetch_assoc($result)) : ?>
+                        <tr class="hover:bg-slate-50">
+                            <td class="whitespace-nowrap px-4 py-3"><?= $no++ ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['nik'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['nama_lengkap'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['tempat_lahir'] ?> / <?= $row['tanggal_lahir'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['jenis_kelamin'] == 'L' ? 'Laki-laki' : 'Perempuan' ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['alamat_lengkap'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['nomor_rt'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['nomor_rw'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['nama_desa'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['nama_kecamatan'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['nama_kabupaten'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['nama_provinsi'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['golongan_darah'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['agama'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['status_perkawinan'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3"><?= $row['pekerjaan'] ?></td>
+                            <td class="whitespace-nowrap px-4 py-3">
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="edit_warga.php?id=<?= $row['id_warga'] ?>" class="inline-flex items-center justify-center rounded-2xl border border-rose-200 bg-rose-100 px-4 py-2 text-sm font-semibold text-rose-800 transition hover:bg-rose-200 hover:text-rose-900">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="hapus_warga.php?id=<?= $row['id_warga'] ?>" class="inline-flex items-center justify-center rounded-2xl bg-rose-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-rose-200 transition hover:bg-rose-700" onclick="return confirm('Hapus data ini?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
-                        <?php endwhile; ?>
-
-                    </tbody>
-                </table>
-            </div>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
         </div>
     </div>
-    <!-- END TABLE -->
-
 </div>
 
-<!-- JS -->
 <script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-
 <script>
 let table;
 
 $(document).ready(function () {
 
-    // INIT DATATABLE
     table = $('#wargaTable').DataTable({
         "autoWidth": false,
         "scrollX": true
     });
 
-    // FILTER PROVINSI → KABUPATEN
     $('#filterProvinsi').change(function () {
         let provId = $(this).find(":selected").data("id");
 
@@ -254,7 +268,6 @@ $(document).ready(function () {
         }
     });
 
-    // FILTER KABUPATEN → KECAMATAN
     $('#filterKabupaten').change(function () {
         let id = $(this).find(":selected").data("id");
 
@@ -271,7 +284,6 @@ $(document).ready(function () {
         }
     });
 
-    // FILTER KECAMATAN → DESA
     $('#filterKecamatan').change(function () {
         let id = $(this).find(":selected").data("id");
 
@@ -287,7 +299,6 @@ $(document).ready(function () {
         }
     });
 
-    // APPLY FILTER
     $('#applyFilter').click(function () {
         table.column(11).search($('#filterProvinsi').val());
         table.column(10).search($('#filterKabupaten').val());
@@ -298,7 +309,6 @@ $(document).ready(function () {
         table.draw();
     });
 
-    // RESET FILTER
     $('#resetFilter').click(function () {
         $('#filterForm select, #filterForm input').val('');
         table.search('').columns().search('').draw();
