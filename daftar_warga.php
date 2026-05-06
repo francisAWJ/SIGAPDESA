@@ -100,7 +100,7 @@ include 'config.php';
         </div>
     </div>
 
-    <details id="filterForm" class="mb-6 overflow-hidden rounded-3xl border border-red-100 bg-white shadow-sm px-6 md:px-8">
+    <details id="filterForm" class="mb-6 overflow-hidden rounded-3xl border border-red-100 bg-white shadow-sm px-2 md:px-8">
         <summary class="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-red-900 transition hover:bg-red-50">
             <span>Filter Data</span>
             <span class="inline-flex items-center rounded-full border border-rose-200 bg-rose-100 px-4 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-200">
