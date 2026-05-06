@@ -87,11 +87,17 @@ include 'config.php';
 <div id="content" class="mx-auto min-h-screen px-4 py-6 sm:px-6 lg:px-8">
 
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
-        <h1 class="text-3xl font-semibold tracking-tight text-red-900">Daftar Warga</h1>
-        <a href="input_data.php" class="inline-flex items-center gap-3 rounded-3xl bg-gradient-to-r from-rose-600 via-red-600 to-rose-500 px-4 py-2 text-base font-semibold text-white shadow-2xl shadow-rose-300 transition hover:from-rose-700 hover:via-red-700 hover:to-rose-600 focus:outline-none focus:ring-4 focus:ring-rose-200">
-            <i class="fas fa-plus"></i>
-            Tambah Data Warga
-        </a>
+        <h1 class="text-3xl font-semibold text-gray-800">Daftar Warga</h1>
+        <div class="flex flex-wrap items-center gap-3">
+            <a href="input_data.php" class="inline-flex items-center gap-3 rounded-3xl bg-gradient-to-r from-rose-600 via-red-600 to-rose-500 px-4 py-2 text-base font-semibold text-white shadow-2xl shadow-rose-300 transition hover:from-rose-700 hover:via-red-700 hover:to-rose-600 focus:outline-none focus:ring-4 focus:ring-rose-200">
+                <i class="fas fa-plus"></i>
+                Tambah Data Warga
+            </a>
+            <a href="input_data.php" class="inline-flex items-center gap-3 rounded-3xl bg-gradient-to-r from-rose-600 via-red-600 to-rose-500 px-4 py-2 text-base font-semibold text-white shadow-2xl shadow-rose-300 transition hover:from-rose-700 hover:via-red-700 hover:to-rose-600 focus:outline-none focus:ring-4 focus:ring-rose-200">
+                <i class="fas fa-arrow-left"></i>
+                Kembali ke Input Data
+            </a>
+        </div>
     </div>
 
     <details id="filterForm" class="mb-6 overflow-hidden rounded-3xl border border-red-100 bg-white shadow-sm px-6 md:px-8">
