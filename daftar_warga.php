@@ -103,7 +103,7 @@ include 'config.php';
     <details id="filterForm" class="mb-6 overflow-hidden rounded-3xl border border-red-100 bg-white shadow-sm px-6 md:px-8">
         <summary class="flex cursor-pointer items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-red-900 transition hover:bg-red-50">
             <span>Filter Data</span>
-            <span class="inline-flex items-center rounded-full border border-rose-200 bg-rose-100 px-3 py-1 text-sm font-semibold text-rose-700 transition hover:bg-rose-200">
+            <span class="inline-flex items-center rounded-full border border-rose-200 bg-rose-100 px-4 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-200">
                 Tampilkan / Sembunyikan
             </span>
         </summary>
@@ -154,10 +154,12 @@ include 'config.php';
                 </div>
 
                 <div class="lg:col-span-4 flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
-                    <button id="applyFilter" class="inline-flex items-center justify-center rounded-2xl bg-red-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-red-800">
+                    <button id="applyFilter" class="inline-flex items-center justify-center rounded-3xl bg-rose-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-300 transition hover:bg-rose-700 focus:outline-none focus:ring-4 focus:ring-rose-200">
+                        <i class="fas fa-filter mr-2"></i>
                         Terapkan Filter
                     </button>
-                    <button id="resetFilter" class="inline-flex items-center justify-center rounded-2xl bg-slate-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-600">
+                    <button id="resetFilter" class="inline-flex items-center justify-center rounded-3xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-200">
+                        <i class="fas fa-undo mr-2"></i>
                         Reset
                     </button>
                 </div>
