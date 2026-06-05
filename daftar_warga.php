@@ -97,6 +97,10 @@ include 'config.php';
                 <i class="fas fa-arrow-left"></i>
                 Kembali ke Input Data
             </a>
+            <a href="report.php" class="inline-flex items-center gap-3 rounded-3xl bg-white px-4 py-2 text-base font-semibold text-rose-700 border border-rose-200 shadow-sm transition hover:bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100">
+                <i class="fas fa-file-alt"></i>
+                Buat Laporan Gempa
+            </a>
         </div>
     </div>
 
@@ -231,6 +235,9 @@ include 'config.php';
                             <td class="whitespace-nowrap px-4 py-3"><?= $row['pekerjaan'] ?></td>
                             <td class="whitespace-nowrap px-4 py-3">
                                 <div class="flex flex-wrap gap-2">
+                                    <a href="report.php?id=<?= $row['id_warga'] ?>" class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900">
+                                        <i class="fas fa-file-alt"></i>
+                                    </a>
                                     <a href="edit_warga.php?id=<?= $row['id_warga'] ?>" class="inline-flex items-center justify-center rounded-2xl border border-rose-200 bg-rose-100 px-4 py-2 text-sm font-semibold text-rose-800 transition hover:bg-rose-200 hover:text-rose-900">
                                         <i class="fas fa-edit"></i>
                                     </a>
