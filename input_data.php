@@ -239,7 +239,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                 </a>
 
                 <a href="report.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
-                    <i class="fas fa-file-pdf"></i>
+                    <i class="fas fa-file-alt"></i>
                     <span>Buat Laporan</span>
                 </a>
 
