@@ -633,8 +633,10 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
                                     <option value="Kayu">Kayu</option>
-                                    <option value="Semi Permanen">Semi Permanen</option>
-                                    <option value="Permanen">Permanen</option>
+                                    <option value="Beton">Beton</option>
+                                    <option value="Baja">Baja</option>
+                                    <option value="Batu Alam">Batu Alam</option>
+                                    <option value="Bambu">Bambu</option>
                                 </select>
                             </div>
                         </div>
