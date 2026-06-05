@@ -222,7 +222,9 @@ function format_date($value) {
         <div class="mx-auto min-h-screen px-4 py-6 sm:px-6 lg:px-8">
             <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
                 <div>
-                    <h1 class="text-3xl font-semibold text-slate-900">Laporan Darurat Gempa</h1>
+                    <h1 class="text-2xl font-semibold text-gray-800">
+                        Laporan Darurat Gempa
+                    </h1>
                     <p class="mt-2 text-sm text-slate-600">Gunakan laporan ini ketika merespons bencana gempa. Informasi ditarik langsung dari data penduduk.</p>
                 </div>
                 <div class="report-action top-actions">
