@@ -69,6 +69,7 @@ function format_date($value) {
     <link href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap" rel="stylesheet">
     <link href="output.css" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         body {
             font-family: 'Mozilla Text', sans-serif;
@@ -244,7 +245,7 @@ function format_date($value) {
             <form method="GET" action="report.php" class="grid gap-4 md:grid-cols-3 items-end">
                 <div>
                     <label class="block text-sm font-semibold text-slate-700">Pilih Warga</label>
-                    <select name="id" class="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-100" onchange="this.form.submit()">
+                    <select id="wargaSelect" name="id" class="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-100" onchange="this.form.submit()">
                         <option value="">-- Pilih nama warga --</option>
                         <?php while ($row = mysqli_fetch_assoc($warga_result)) : ?>
                             <option value="<?= $row['id_warga']; ?>" <?= $selected_id == $row['id_warga'] ? 'selected' : ''; ?>>
@@ -326,6 +327,18 @@ function format_date($value) {
         </div>
     </main>
 </div>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#wargaSelect').select2({
+            placeholder: '-- Pilih nama warga --',
+            width: '100%',
+            allowClear: true,
+            minimumResultsForSearch: 5
+        });
+    });
+</script>
 </body>
 
 </html>
