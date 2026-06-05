@@ -129,7 +129,7 @@ function format_date($value) {
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            border-radius: 9999px;
+            border-radius: 0.375rem;
             padding: 0.9rem 1.25rem;
             font-weight: 600;
             text-decoration: none;
@@ -142,8 +142,6 @@ function format_date($value) {
         }
 
         .report-action a {
-            background: #f8fafc;
-            color: #334155;
             border: 1px solid #e2e8f0;
         }
 
@@ -220,7 +218,7 @@ function format_date($value) {
 
     <main class="flex-1 p-4 md:p-6">
         <div class="mx-auto min-h-screen px-4 py-6 sm:px-6 lg:px-8">
-            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
+            <div class="flex flex-col gap-4 mb-6">
                 <div>
                     <h1 class="text-2xl font-semibold text-gray-800">
                         Laporan Darurat Gempa
@@ -228,11 +226,11 @@ function format_date($value) {
                     <p class="mt-2 text-sm text-slate-600">Gunakan laporan ini ketika merespons bencana gempa. Informasi ditarik langsung dari data penduduk.</p>
                 </div>
                 <div class="report-action top-actions">
-                    <a href="input_data.php" class="inline-flex items-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-rose-700">
+                    <a href="input_data.php" class="inline-flex items-center gap-2 rounded bg-rose-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-rose-700">
                         <i class="fas fa-plus"></i>
                         Input Data Penduduk
                     </a>
-                    <a href="daftar_warga.php" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 border border-slate-200 shadow-sm hover:bg-slate-50">
+                    <a href="daftar_warga.php" class="inline-flex items-center gap-2 rounded bg-white px-4 py-2 text-sm font-semibold text-slate-700 border border-slate-200 shadow-sm hover:bg-slate-50">
                         <i class="fas fa-list"></i>
                         Daftar Warga
                     </a>
