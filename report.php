@@ -167,7 +167,8 @@ function format_date($value) {
         @media print {
             aside,
             .report-action,
-            .top-actions {
+            .top-actions,
+            .print-hide {
                 display: none;
             }
 
@@ -219,7 +220,7 @@ function format_date($value) {
 
     <main class="flex-1 p-4 md:p-6">
         <div class="mx-auto min-h-screen px-4 py-6 sm:px-6 lg:px-8">
-            <div class="flex flex-col gap-4 mb-6">
+            <div class="flex flex-col gap-4 mb-6 print-hide">
                 <div>
                     <h1 class="text-2xl font-semibold text-gray-800">
                         Laporan Darurat Gempa
@@ -239,7 +240,7 @@ function format_date($value) {
             </div>
 
             <div class="report-card">
-        <div class="report-section">
+        <div class="report-section print-hide">
             <form method="GET" action="report.php" class="grid gap-4 md:grid-cols-3 items-end">
                 <div>
                     <label class="block text-sm font-semibold text-slate-700">Pilih Warga</label>
