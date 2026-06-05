@@ -312,7 +312,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                         <div class="grid md:grid-cols-3 gap-4 mt-4">
                             <div>
-                                <label class="block text-sm font-medium">Tempat Lahir</label>
+                                <label class="block text-sm font-medium">Tempat Lahir <span class="text-red-500">*</span></label>
                                 <select name="tempat_lahir" required
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Kota/Kabupaten --</option>
@@ -328,7 +328,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium">Tanggal Lahir</label>
+                                <label class="block text-sm font-medium">Tanggal Lahir <span class="text-red-500">*</span></label>
                                 <input type="date" name="tanggal_lahir"
                                     class="w-full mt-1 p-2 border rounded">
                             </div>
@@ -353,7 +353,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                         <div class="grid md:grid-cols-3 gap-4">
                             <div>
-                                <label class="block text-sm font-medium">Golongan Darah</label>
+                                <label class="block text-sm font-medium">Golongan Darah <span class="text-red-500">*</span></label>
                                 <select name="golongan_darah" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
                                     <option value="A">A</option>
@@ -365,7 +365,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium">Agama</label>
+                                <label class="block text-sm font-medium">Agama <span class="text-red-500">*</span></label>
                                 <select name="agama" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
                                     <option value="Islam">Islam</option>
@@ -378,7 +378,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium">Status Perkawinan</label>
+                                <label class="block text-sm font-medium">Status Perkawinan <span class="text-red-500">*</span></label>
                                 <select name="status_perkawinan" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
                                     <option value="Belum Kawin">Belum Kawin</option>
@@ -398,14 +398,14 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                         <div class="grid md:grid-cols-3 gap-4">
                             <div>
-                                <label class="block text-sm font-medium">Nomor Telepon</label>
+                                <label class="block text-sm font-medium">Nomor Telepon <span class="text-red-500">*</span></label>
                                 <input type="tel" name="nomor_telepon"
                                     class="w-full mt-1 p-2 border rounded"
                                     placeholder="08xxxxxxxxxx">
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium">Pekerjaan</label>
+                                <label class="block text-sm font-medium">Pekerjaan <span class="text-red-500">*</span></label>
                                 <select name="pekerjaan" required
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
@@ -440,7 +440,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                         </div>
 
                         <div class="mt-4">
-                            <label class="block text-sm font-medium">Status Domisili</label>
+                            <label class="block text-sm font-medium">Status Domisili <span class="text-red-500">*</span></label>
                             <select name="status_domisili" class="w-full mt-1 p-2 border rounded">
                                 <option value="Menetap">Menetap</option>
                                 <option value="Kerja di Luar">Merantau</option>
@@ -464,7 +464,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                             </label>
 
                             <div id="perkiraan_lahir_group" class="hidden">
-                                <label class="block text-sm font-medium">Perkiraan Lahir</label>
+                                <label class="block text-sm font-medium">Perkiraan Lahir <span class="text-red-500">*</span></label>
                                 <input type="date" name="perkiraan_lahir"
                                     class="w-full p-2 border rounded">
                             </div>
@@ -502,7 +502,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                             <!-- NOMOR KK -->
                             <div>
-                                <label class="block text-sm font-medium">Nomor Kartu Keluarga (KK)</label>
+                                <label class="block text-sm font-medium">Nomor Kartu Keluarga (KK) <span class="text-red-500">*</span></label>
                                 <!-- <select name="nomor_kk" id="nomor_kk"
                                     class="w-full mt-1 p-2 border rounded focus:ring-2 focus:ring-rose-400">
                                     <option value="">-- Pilih KK (Jika Sudah Terdaftar) --</option>
@@ -539,7 +539,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                         <!-- Alamat -->
                         <div class="mb-4">
-                            <label class="block text-sm font-medium">Alamat Lengkap</label>
+                            <label class="block text-sm font-medium">Alamat Lengkap <span class="text-red-500">*</span></label>
                             <textarea name="alamat_lengkap" rows="2"
                                 class="w-full mt-1 p-2 border rounded focus:ring-2 focus:ring-rose-400"
                                 placeholder="Contoh: Jl. Mawar No.12"></textarea>
@@ -549,7 +549,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                         <div class="grid md:grid-cols-3 gap-4">
                             <!-- Provinsi -->
                             <div>
-                                <label class="block text-sm font-medium">Provinsi</label>
+                                <label class="block text-sm font-medium">Provinsi <span class="text-red-500">*</span></label>
                                 <select name="provinsi" id="provinsi" required
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Provinsi --</option>
@@ -566,7 +566,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                             <!-- Kabupaten -->
                             <div>
-                                <label class="block text-sm font-medium">Kabupaten / Kota</label>
+                                <label class="block text-sm font-medium">Kabupaten / Kota <span class="text-red-500">*</span></label>
                                 <select name="kabupaten" id="kabupaten" required
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Kabupaten --</option>
@@ -575,7 +575,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                             <!-- Kecamatan -->
                             <div>
-                                <label class="block text-sm font-medium">Kecamatan</label>
+                                <label class="block text-sm font-medium">Kecamatan <span class="text-red-500">*</span></label>
                                 <select name="kecamatan" id="kecamatan" required
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Kecamatan --</option>
@@ -587,7 +587,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                         <div class="grid md:grid-cols-4 gap-4 mt-4">
                             <!-- Desa -->
                             <div>
-                                <label class="block text-sm font-medium">Desa</label>
+                                <label class="block text-sm font-medium">Desa <span class="text-red-500">*</span></label>
                                 <select name="desa" id="desa"
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih Desa --</option>
@@ -596,7 +596,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                             <!-- RT -->
                             <div>
-                                <label class="block text-sm font-medium">RT</label>
+                                <label class="block text-sm font-medium">RT <span class="text-red-500">*</span></label>
                                 <select name="id_rt" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- RT --</option>
                                     <?php 
@@ -612,7 +612,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                             <!-- RW -->
                             <div>
-                                <label class="block text-sm font-medium">RW</label>
+                                <label class="block text-sm font-medium">RW <span class="text-red-500">*</span></label>
                                 <select name="id_rw" class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- RW --</option>
                                     <?php 
@@ -628,7 +628,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                             <!-- Konstruksi -->
                             <div>
-                                <label class="block text-sm font-medium">Jenis Konstruksi</label>
+                                <label class="block text-sm font-medium">Jenis Konstruksi <span class="text-red-500">*</span></label>
                                 <select name="jenis_konstruksi"
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
