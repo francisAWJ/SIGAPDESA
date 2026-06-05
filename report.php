@@ -165,6 +165,7 @@ function format_date($value) {
         }
 
         @media print {
+            aside,
             .report-action,
             .top-actions {
                 display: none;
