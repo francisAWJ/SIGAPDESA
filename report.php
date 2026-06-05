@@ -179,26 +179,65 @@ function format_date($value) {
     </style>
 </head>
 
-<body>
-<div class="mx-auto min-h-screen px-4 py-6 sm:px-6 lg:px-8">
-    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
-        <div>
-            <h1 class="text-3xl font-semibold text-slate-900">Laporan Darurat Gempa</h1>
-            <p class="mt-2 text-sm text-slate-600">Gunakan laporan ini ketika merespons bencana gempa. Informasi ditarik langsung dari data penduduk.</p>
-        </div>
-        <div class="report-action top-actions">
-            <a href="input_data.php" class="inline-flex items-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-rose-700">
-                <i class="fas fa-plus"></i>
-                Input Data Penduduk
-            </a>
-            <a href="daftar_warga.php" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 border border-slate-200 shadow-sm hover:bg-slate-50">
-                <i class="fas fa-list"></i>
-                Daftar Warga
-            </a>
-        </div>
-    </div>
+<body class="bg-gray-100">
+<div class="flex flex-col md:flex-row min-h-screen">
 
-    <div class="report-card">
+    <!-- Sidebar -->
+    <aside class="w-full md:w-64 bg-gradient-to-b from-rose-600 to-rose-400 text-white flex flex-col">
+        <div class="flex items-center justify-center py-4">
+            <img src="img/gmls_logo.png" alt="Logo SIGAP DESA" class="w-40 h-auto">
+        </div>
+
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a href="index.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="input_data.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <i class="fas fa-user-edit"></i>
+                <span>Input Data Penduduk</span>
+            </a>
+            <a href="visual_data.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <i class="fas fa-chart-bar"></i>
+                <span>Visual Data</span>
+            </a>
+            <a href="titik_evakuasi.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Titik Evakuasi</span>
+            </a>
+            <a href="report.php" class="flex items-center gap-3 px-3 py-2 rounded bg-rose-800">
+                <i class="fas fa-file-alt"></i>
+                <span>Buat Laporan</span>
+            </a>
+            <a href="logout.php"
+               onclick="return confirm('Yakin ingin logout?');"
+               class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="flex-1 p-4 md:p-6">
+        <div class="mx-auto min-h-screen px-4 py-6 sm:px-6 lg:px-8">
+            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
+                <div>
+                    <h1 class="text-3xl font-semibold text-slate-900">Laporan Darurat Gempa</h1>
+                    <p class="mt-2 text-sm text-slate-600">Gunakan laporan ini ketika merespons bencana gempa. Informasi ditarik langsung dari data penduduk.</p>
+                </div>
+                <div class="report-action top-actions">
+                    <a href="input_data.php" class="inline-flex items-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-rose-700">
+                        <i class="fas fa-plus"></i>
+                        Input Data Penduduk
+                    </a>
+                    <a href="daftar_warga.php" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 border border-slate-200 shadow-sm hover:bg-slate-50">
+                        <i class="fas fa-list"></i>
+                        Daftar Warga
+                    </a>
+                </div>
+            </div>
+
+            <div class="report-card">
         <div class="report-section">
             <form method="GET" action="report.php" class="grid gap-4 md:grid-cols-3 items-end">
                 <div>
@@ -281,7 +320,9 @@ function format_date($value) {
                 </div>
             </div>
         <?php endif; ?>
-    </div>
+            </div>
+        </div>
+    </main>
 </div>
 </body>
 
