@@ -51,11 +51,6 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'admin') {
                 <span>Input Data Penduduk</span>
             </a>
 
-            <a href="visual_data.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
-                <i class="fas fa-chart-bar"></i>
-                <span>Visual Data</span>
-            </a>
-
             <a href="titik_evakuasi.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
                 <i class="fas fa-map-marker-alt"></i>
                 <span>Titik Evakuasi</span>
