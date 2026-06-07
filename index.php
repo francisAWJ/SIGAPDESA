@@ -355,7 +355,7 @@ if (isset($_GET['ajax']) && $_GET['ajax'] == '1') {
                     <button id="btnResetFilter" class="px-4 py-2 border border-gray-200 text-gray-600 rounded-lg hover:bg-gray-50 transition text-sm font-semibold flex items-center gap-2 focus:outline-none">
                         <i class="fas fa-undo"></i> Reset
                     </button>
-                    <button id="btnApplyFilter" class="px-5 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg transition text-sm font-semibold shadow-md shadow-rose-200 flex items-center gap-2 focus:outline-none">
+                    <button id="btnApplyFilter" class="px-6 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg transition text-sm font-semibold shadow-md shadow-rose-200 flex items-center gap-2 focus:outline-none">
                         <i class="fas fa-filter"></i> Terapkan Filter
                     </button>
                 </div>
