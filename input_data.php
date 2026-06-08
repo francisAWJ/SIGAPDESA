@@ -443,7 +443,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                             <label class="block text-sm font-medium">Status Domisili <span class="text-red-500">*</span></label>
                             <select name="status_domisili" class="w-full mt-1 p-2 border rounded">
                                 <option value="Menetap">Menetap</option>
-                                <option value="Kerja di Luar">Merantau</option>
+                                <option value="Kerja di Luar">Kerja di Luar</option>
                                 <option value="Pendatang">Pendatang</option>
                                 <option value="Tinggal Sementara">Tinggal Sementara</option>
                             </select>
