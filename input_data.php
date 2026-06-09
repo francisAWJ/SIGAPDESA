@@ -259,13 +259,20 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                         Input Data Penduduk
                     </h1>
 
-                    <!-- Button -->
-                    <a href="daftar_warga.php"
-                    class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 text-white text-sm font-medium rounded hover:bg-rose-700 transition shadow-sm w-fit">
+                    <!-- Buttons -->
+                    <div class="flex gap-2 flex-wrap">
+                        <button type="button" onclick="showUploadModal()"
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 transition shadow-sm w-fit">
+                            <i class="fas fa-file-csv"></i>
+                            <span>Upload CSV</span>
+                        </button>
 
-                        <i class="fas fa-list"></i>
-                        <span>Lihat Daftar Warga</span>
-                    </a>
+                        <a href="daftar_warga.php"
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 text-white text-sm font-medium rounded hover:bg-rose-700 transition shadow-sm w-fit">
+                            <i class="fas fa-list"></i>
+                            <span>Lihat Daftar Warga</span>
+                        </a>
+                    </div>
 
                 </div>
 
