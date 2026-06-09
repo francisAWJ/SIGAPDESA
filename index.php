@@ -227,9 +227,9 @@ if (isset($_GET['ajax']) && $_GET['ajax'] == '1') {
                 <span>Input Data Penduduk</span>
             </a>
 
-            <a href="titik_evakuasi.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+            <a href="peta_sebaran.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>Titik Evakuasi</span>
+                <span>Peta Sebaran Evakuasi</span>
             </a>
 
             <a href="report.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
