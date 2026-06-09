@@ -628,7 +628,7 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
                             <!-- Konstruksi -->
                             <div>
-                                <label class="block text-sm font-medium">Jenis Konstruksi <span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium">Jenis Konstruksi Dominan<span class="text-red-500">*</span></label>
                                 <select name="jenis_konstruksi"
                                     class="w-full mt-1 p-2 border rounded">
                                     <option value="">-- Pilih --</option>
