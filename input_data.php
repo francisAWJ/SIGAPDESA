@@ -233,11 +233,6 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                     <span>Peta Sebaran Evakuasi</span>
                 </a>
 
-                <!-- <a href="report.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Buat Laporan</span>
-                </a> -->
-
                 <a href="logout.php"
                 onclick="return confirm('Yakin ingin logout?');"
                 class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
