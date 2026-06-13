@@ -245,9 +245,49 @@ if (isset($_GET['ajax']) && $_GET['ajax'] == '1') {
 
     <!-- Content -->
     <main class="flex-1 p-4 md:p-6">
-        <h1 class="text-2xl font-semibold text-gray-800 mb-4">
-            Selamat Datang di SIGAP DESA GMLS!
-        </h1>
+        <div class="flex items-center justify-between mb-4">
+            <h1 class="text-2xl font-semibold text-gray-800">
+                Selamat Datang di SIGAP DESA GMLS!
+            </h1>
+            <button id="btnContributors" type="button" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-rose-600 text-white text-sm font-semibold hover:bg-rose-700 transition shadow">
+                <i class="fas fa-users"></i> Kontributor
+            </button>
+        </div>
+
+        <!-- Contributors Modal -->
+        <div id="contributorsModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50">
+            <div class="bg-white rounded-xl shadow-lg w-full max-w-md mx-4 p-6 relative pt-10" style="position:relative;">
+                <button id="closeContributorsModal" type="button" class="absolute top-4 right-4 text-gray-400 hover:text-rose-600 transition" style="position:absolute; top:1rem; right:1rem; left:auto;">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+                <h6 class="font-bold text-rose-600 text-lg flex items-center gap-2 mb-4">
+                    <i class="fas fa-users"></i> Kontributor
+                </h6>
+                <ul class="space-y-2 text-sm text-gray-700 max-h-96 overflow-y-auto">
+                    <li class="border-b border-gray-100 pb-2">
+                        <span class="font-semibold">Anis Faisal Reza</span> - Direktur GMLS
+                    </li>
+                    <li class="border-b border-gray-100 pb-2">
+                        <span class="font-semibold">Fernando Agustino Hutahaean</span> - Mahasiswa FTI Batch 4
+                    </li>
+                    <li class="border-b border-gray-100 pb-2">
+                        <span class="font-semibold">Alfreando Moza Siagian</span> - Mahasiswa FTI Batch 4
+                    </li>
+                    <li class="border-b border-gray-100 pb-2">
+                        <span class="font-semibold">Abigail Tesalonika</span> - Mahasiswa FTI Batch 4
+                    </li>
+                    <li class="border-b border-gray-100 pb-2">
+                        <span class="font-semibold">F Adiwidya Wirawan J</span> - Mahasiswa FTI Batch 5
+                    </li>
+                    <li class="border-b border-gray-100 pb-2">
+                        <span class="font-semibold">Rocky</span> - Mahasiswa FTI Batch 5
+                    </li>
+                    <li class="pb-2">
+                        <span class="font-semibold">Yoel Beny Christian</span> - Mahasiswa FTI Batch 5
+                    </li>
+                </ul>
+            </div>
+        </div>
 
         <!-- ==================== VISUAL DATA CODES ==================== -->
         <style>
@@ -543,6 +583,19 @@ if (isset($_GET['ajax']) && $_GET['ajax'] == '1') {
                                 display: false
                             }
                         }
+                    }
+                });
+
+                // ==================== CONTRIBUTORS MODAL ====================
+                $('#btnContributors').click(function() {
+                    $('#contributorsModal').removeClass('hidden').addClass('flex');
+                });
+                $('#closeContributorsModal').click(function() {
+                    $('#contributorsModal').addClass('hidden').removeClass('flex');
+                });
+                $('#contributorsModal').click(function(e) {
+                    if (e.target === this) {
+                        $('#contributorsModal').addClass('hidden').removeClass('flex');
                     }
                 });
 
