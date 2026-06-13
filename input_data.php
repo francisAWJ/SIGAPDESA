@@ -738,7 +738,8 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
 
     <!-- ==================== CSV UPLOAD MODAL ==================== -->
     <div id="uploadModal"
-         class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50">
+         class="fixed inset-0 z-50 hidden items-center justify-center"
+         style="background: rgba(0, 0, 0, 0.5);">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-lg mx-4 p-6">
 
             <div class="flex items-center justify-between mb-4">
