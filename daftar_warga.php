@@ -97,10 +97,10 @@ include 'config.php';
                 <i class="fas fa-arrow-left"></i>
                 Kembali ke Input Data
             </a>
-            <a href="report.php" class="inline-flex items-center gap-3 rounded-3xl bg-white px-4 py-2 text-base font-semibold text-rose-700 border border-rose-200 shadow-sm transition hover:bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100">
+            <!-- <a href="report.php" class="inline-flex items-center gap-3 rounded-3xl bg-white px-4 py-2 text-base font-semibold text-rose-700 border border-rose-200 shadow-sm transition hover:bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100">
                 <i class="fas fa-file-alt"></i>
                 Buat Laporan Gempa
-            </a>
+            </a> -->
         </div>
     </div>
 

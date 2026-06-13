@@ -232,10 +232,10 @@ if (isset($_GET['ajax']) && $_GET['ajax'] == '1') {
                 <span>Peta Sebaran Evakuasi</span>
             </a>
 
-            <a href="report.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+            <!-- <a href="report.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
                 <i class="fas fa-file-alt"></i>
                 <span>Buat Laporan</span>
-            </a>
+            </a> -->
 
             <!-- Logout -->
             <a href="logout.php"

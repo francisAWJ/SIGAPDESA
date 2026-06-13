@@ -233,10 +233,10 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
                     <span>Peta Sebaran Evakuasi</span>
                 </a>
 
-                <a href="report.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
+                <!-- <a href="report.php" class="flex items-center gap-3 px-3 py-2 rounded hover:bg-rose-800 transition">
                     <i class="fas fa-file-alt"></i>
                     <span>Buat Laporan</span>
-                </a>
+                </a> -->
 
                 <a href="logout.php"
                 onclick="return confirm('Yakin ingin logout?');"
@@ -741,6 +741,85 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
         </div>
     </div>
 
+    <!-- ==================== CSV UPLOAD MODAL ==================== -->
+    <div id="uploadModal"
+         class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg mx-4 p-6">
+
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <i class="fas fa-file-csv text-blue-600"></i> Upload Data CSV
+                </h2>
+                <button onclick="closeUploadModal()"
+                        class="text-gray-400 hover:text-gray-600 text-xl font-bold leading-none">&times;</button>
+            </div>
+
+            <!-- Instructions -->
+            <div class="bg-blue-50 border border-blue-200 rounded p-3 mb-4 text-sm text-blue-800">
+                <p class="font-semibold mb-1"><i class="fas fa-info-circle"></i> Format CSV yang diperlukan:</p>
+                <p>Header baris pertama harus menggunakan nama kolom berikut (tidak wajib semua, kolom kosong akan diisi nilai default):</p>
+                <code class="block mt-2 bg-white border rounded p-2 text-xs break-all text-gray-700">
+                    nik, nama_lengkap, tempat_lahir, tanggal_lahir, jenis_kelamin, golongan_darah, agama, status_perkawinan, pekerjaan, nomor_telepon, jenis_penghasilan, status_domisili, status_kehamilan, perkiraan_lahir, kategori_disabilitas, keterangan_disabilitas, nomor_kk, is_kepala_keluarga, alamat_lengkap, rt, rw, desa, kecamatan, kabupaten, provinsi, jenis_konstruksi, status_zona_tsunami, latitude, longitude
+                </code>
+                <p class="mt-2 text-xs text-blue-700">
+                    <strong>Wajib:</strong> <code>nik</code> (16 digit), <code>nama_lengkap</code>.
+                    Gunakan nama wilayah (misal: <code>provinsi=Jawa Barat</code>) <em>atau</em> ID langsung (<code>id_provinsi=6</code>) — keduanya didukung. ID lebih diprioritaskan jika keduanya diisi.
+                </p>
+                <a href="template_csv_warga.csv" download
+                   class="inline-flex items-center gap-1 mt-2 text-xs text-blue-600 hover:underline font-medium">
+                    <i class="fas fa-download"></i> Download Template CSV
+                </a>
+            </div>
+
+            <!-- File input -->
+            <div id="dropZone"
+                 class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-blue-400 transition mb-4"
+                 onclick="document.getElementById('csvFileInput').click()"
+                 ondragover="event.preventDefault(); this.classList.add('border-blue-400')"
+                 ondragleave="this.classList.remove('border-blue-400')"
+                 ondrop="handleDrop(event)">
+                <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                <p class="text-sm text-gray-500">Klik atau seret file CSV ke sini</p>
+                <p id="selectedFileName" class="text-sm font-medium text-blue-600 mt-1 hidden"></p>
+            </div>
+            <input type="file" id="csvFileInput" accept=".csv" class="hidden"
+                   onchange="handleFileSelect(this)">
+
+            <!-- Progress bar (hidden by default) -->
+            <div id="uploadProgress" class="hidden mb-4">
+                <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                    <span>Mengupload...</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all" style="width:0%"></div>
+                </div>
+            </div>
+
+            <!-- Result area (hidden by default) -->
+            <div id="uploadResult" class="hidden mb-4 text-sm rounded p-3"></div>
+
+            <!-- Error details (hidden by default) -->
+            <div id="uploadErrors" class="hidden mb-4">
+                <p class="text-xs font-semibold text-red-600 mb-1">Detail baris yang dilewati:</p>
+                <ul id="uploadErrorList" class="text-xs text-red-700 list-disc pl-4 max-h-32 overflow-y-auto space-y-0.5"></ul>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex justify-end gap-2">
+                <button onclick="closeUploadModal()"
+                        class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 text-sm">
+                    Tutup
+                </button>
+                <button id="btnUpload" onclick="submitCSV()"
+                        class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled>
+                    <i class="fas fa-upload"></i> Upload & Import
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- ==================== SCRIPTS ==================== -->
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -979,6 +1058,151 @@ $rw_result = mysqli_query($conn, "SELECT * FROM rw ORDER BY nomor_rw ASC");
             if (!searchBox.contains(e.target)) {
                 suggestions.style.display = "none";
             }
+        });
+        // ==================== CSV UPLOAD MODAL ====================
+        function showUploadModal() {
+            const modal = document.getElementById('uploadModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            resetUploadModal();
+        }
+
+        function closeUploadModal() {
+            const modal = document.getElementById('uploadModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function resetUploadModal() {
+            document.getElementById('csvFileInput').value = '';
+            document.getElementById('selectedFileName').classList.add('hidden');
+            document.getElementById('selectedFileName').textContent = '';
+            document.getElementById('uploadProgress').classList.add('hidden');
+            document.getElementById('uploadResult').classList.add('hidden');
+            document.getElementById('uploadErrors').classList.add('hidden');
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('progressPercent').textContent = '0%';
+            document.getElementById('btnUpload').disabled = true;
+        }
+
+        function handleFileSelect(input) {
+            if (input.files && input.files[0]) {
+                showSelectedFile(input.files[0]);
+            }
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            document.getElementById('dropZone').classList.remove('border-blue-400');
+            const file = event.dataTransfer.files[0];
+            if (file && file.name.endsWith('.csv')) {
+                document.getElementById('csvFileInput').files; // read-only, use DataTransfer
+                // Assign via DataTransfer to the hidden input
+                const dt = new DataTransfer();
+                dt.items.add(file);
+                document.getElementById('csvFileInput').files = dt.files;
+                showSelectedFile(file);
+            } else {
+                alert('Hanya file CSV yang diizinkan.');
+            }
+        }
+
+        function showSelectedFile(file) {
+            const label = document.getElementById('selectedFileName');
+            label.textContent = '📄 ' + file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+            label.classList.remove('hidden');
+            document.getElementById('btnUpload').disabled = false;
+            // Reset any previous results
+            document.getElementById('uploadResult').classList.add('hidden');
+            document.getElementById('uploadErrors').classList.add('hidden');
+        }
+
+        function submitCSV() {
+            const input = document.getElementById('csvFileInput');
+            if (!input.files || input.files.length === 0) {
+                alert('Pilih file CSV terlebih dahulu.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('csv_file', input.files[0]);
+
+            // Show progress
+            document.getElementById('uploadProgress').classList.remove('hidden');
+            document.getElementById('uploadResult').classList.add('hidden');
+            document.getElementById('uploadErrors').classList.add('hidden');
+            document.getElementById('btnUpload').disabled = true;
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.upload.addEventListener('progress', function(e) {
+                if (e.lengthComputable) {
+                    const pct = Math.round((e.loaded / e.total) * 100);
+                    document.getElementById('progressBar').style.width = pct + '%';
+                    document.getElementById('progressPercent').textContent = pct + '%';
+                }
+            });
+
+            xhr.addEventListener('load', function() {
+                document.getElementById('uploadProgress').classList.add('hidden');
+                document.getElementById('btnUpload').disabled = false;
+
+                let res;
+                try {
+                    res = JSON.parse(xhr.responseText);
+                } catch(e) {
+                    showUploadResult(false, 'Respon server tidak valid.');
+                    return;
+                }
+
+                if (res.success) {
+                    showUploadResult(true, res.message);
+                    if (res.errors && res.errors.length > 0) {
+                        showErrorList(res.errors);
+                    }
+                } else {
+                    showUploadResult(false, res.message || 'Terjadi kesalahan.');
+                }
+            });
+
+            xhr.addEventListener('error', function() {
+                document.getElementById('uploadProgress').classList.add('hidden');
+                document.getElementById('btnUpload').disabled = false;
+                showUploadResult(false, 'Koneksi gagal. Coba lagi.');
+            });
+
+            xhr.open('POST', 'proses_upload_csv.php');
+            xhr.send(formData);
+        }
+
+        function showUploadResult(success, message) {
+            const el = document.getElementById('uploadResult');
+            el.classList.remove('hidden', 'bg-green-50', 'border-green-300', 'text-green-800',
+                                 'bg-red-50', 'border-red-300', 'text-red-800', 'border');
+            if (success) {
+                el.className = 'mb-4 text-sm rounded p-3 bg-green-50 border border-green-300 text-green-800';
+                el.innerHTML = '<i class="fas fa-check-circle"></i> ' + message;
+            } else {
+                el.className = 'mb-4 text-sm rounded p-3 bg-red-50 border border-red-300 text-red-800';
+                el.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + message;
+            }
+        }
+
+        function showErrorList(errors) {
+            const container = document.getElementById('uploadErrors');
+            const list      = document.getElementById('uploadErrorList');
+            list.innerHTML  = '';
+            errors.forEach(function(err) {
+                const li = document.createElement('li');
+                li.textContent = err;
+                list.appendChild(li);
+            });
+            container.classList.remove('hidden');
+        }
+
+        // Close modal on backdrop click
+        document.getElementById('uploadModal').addEventListener('click', function(e) {
+            if (e.target === this) closeUploadModal();
         });
     </script>
 </body>
