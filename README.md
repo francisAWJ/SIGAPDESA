@@ -13,4 +13,4 @@ Jika ada pertanyaan, silahkan hubungi WA ini: 0811988344 (Oley).
 - Tambahkan visualisasi
 
 ## Dokumentasi
-Untuk informasi lebih lengkap, silahkan baca dokumentasi untuk proyek SIGAP DESA di bagian Wiki (atau klik di sini).
+Untuk informasi lebih lengkap, silahkan baca dokumentasi untuk proyek SIGAP DESA di bagian Wiki (atau klik di [sini](https://github.com/francisAWJ/SIGAPDESA/wiki)).
