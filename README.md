@@ -7,10 +7,5 @@ Bagi mahasiswa FTI yang mengikuti Humanity Project dan ditugaskan untuk mengerja
 
 Jika ada pertanyaan, silahkan hubungi WA ini: 0811988344 (Oley).
 
-## To-do list
-- Pindah seluruh website ke Laravel
-- Tambah role 'RT'
-- Tambahkan visualisasi
-
 ## Dokumentasi
 Untuk informasi lebih lengkap, silahkan baca dokumentasi untuk proyek SIGAP DESA di bagian Wiki (atau klik di [sini](https://github.com/francisAWJ/SIGAPDESA/wiki)).
